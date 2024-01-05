@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block content %}
+{% load static %}
+
+<!-- Main Section -->
+<h3 class="devInfo__subtitle">Subtopics</h3>
+                    <nav class="header__nav">
+                    <ul class="header__menu">
+                        {% for subtopic in subtopics %}
+                        <li class="header__menu">{{subtopic.name}}</li>
+                        {% endfor %}
+
+                        </ul>
+                        </nav>
+                    </div>
+
+{% endblock %}
