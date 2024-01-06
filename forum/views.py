@@ -6,6 +6,7 @@ from django.db.models import Q
 from django.contrib.auth import authenticate, login, logout
 from .models import Room, Topic, Message
 from .forms import RoomForm, UserForm, MyUserCreationForm
+from .models import Room, Topic, Message
 from users.models import Profile
 
 def forum(request):

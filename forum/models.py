@@ -1,8 +1,8 @@
 from django.db import models
-from users.models import Profile as User
+from django.contrib.auth.models import User
 
 
-# class User(AbstractUser):
+# class Participant(models.Model):
 #     name = models.CharField(max_length=200, null=True)
 #     email = models.EmailField(unique=True, null=True)
 #     bio = models.TextField(null=True)
@@ -21,7 +21,7 @@ class Topic(models.Model):
 
 
 class Room(models.Model):
-    host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    host = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='host')
     topic = models.ForeignKey(Topic, on_delete=models.SET_NULL, null=True)
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)

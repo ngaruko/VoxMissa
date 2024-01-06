@@ -1,12 +1,12 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from .models import Room
-from users.models import Profile as User
+from users.models import Profile
 
 
 class MyUserCreationForm(UserCreationForm):
     class Meta:
-        model = User
+        model = Profile
         fields = ['name', 'username', 'email', 'password1', 'password2']
 
 
@@ -19,5 +19,5 @@ class RoomForm(ModelForm):
 
 class UserForm(ModelForm):
     class Meta:
-        model = User
+        model = Profile
         fields = ['profile_image', 'name', 'username', 'email', 'bio']

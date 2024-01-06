@@ -1,1 +1,1 @@
-web: gunicorn politics.wsgi --log-file -
+web: gunicorn core.wsgi --log-file -
