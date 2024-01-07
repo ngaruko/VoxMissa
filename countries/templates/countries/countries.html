@@ -1,9 +1,9 @@
 {% extends 'main.html' %}
 {% block content %}
-<link rel="profile" href="http://gmpg.org/xfn/11" />
 <title> Country Selector</title>
 <!-- Main Section -->
 <main class="countries">
+
     <section class="hero-section text-center">
         <div class="container container--narrow">
             <div class="hero-section__box">
@@ -35,6 +35,7 @@
             
         </div>
     </section>
+
     <!-- Search Result: countries -->
     <section id="main" class="">
         <div  class="page-wrapper page-left-sidebar">
@@ -42,43 +43,99 @@
         <div id="content" class="large-9 right col" role="main">
         <div class="page-inner">
         <div id="country_selector_page" class="country_selector_page">
-        <div class="country_selector_countries">
-            <div class="country_selector_continents">
-                <div class="country-selector-row">
-                                    <div class="country-selector-col-sm-2 country-selector-col-sm-offset-1">
-                        <a href="#" data-continent="americas" class="country_selector_continent">
-                            <h2>Africa</h2>
-                            <i class="mg map-wrld-af"></i>
-                        </a>
-                    </div>
-                                    <div class="country-selector-col-sm-2 ">
-                        <a href="#" data-continent="asia" class="country_selector_continent">
-                            <h2>Americas</h2>
-                            <i class="mg map-wrld-am"></i>
-                        </a>
-                    </div>
-                                    <div class="country-selector-col-sm-2 ">
-                        <a href="#" data-continent="europe" class="country_selector_continent">
-                            <h2>Asia</h2>
-                            <i class="mg map-wrld-as"></i>
-                        </a>
-                    </div>
-                    <div class="country-selector-col-sm-2 ">
-                        <a href="#" data-continent="europe" class="country_selector_continent">
-                            <h2>Europe</h2>
-                            <i class="mg map-wrld-eu"></i>
-                        </a>
-                    </div>
-                    <div class="country-selector-col-sm-2 ">
-                        <a href="#" data-continent="europe" class="country_selector_continent">
-                            <h2>Oceania</h2>
-                            <i class="mg map-wrld-oc"></i>
-                        </a>
-                    </div>
-                                </div>
+
+            <ul id="tabs" class="country_selector_continents">
+
+                <li class="country-selector-col-sm-2"><a id="tab1">
+                    <h2>Africa</h2>
+                    <i class="mg map-wrld-af"></i>
+                </a>
+                </li>
+                <li class="country-selector-col-sm-2"><a id="tab2"><h2>America</h2>
+                    <i class="mg map-wrld-am"></i></a></li>
+                    <li class="country-selector-col-sm-2"><a id="tab3"><h2>Asia</h2>
+                        <i class="mg map-wrld-as"></i></a></li>
+                        <li class="country-selector-col-sm-2"><a id="tab4"><h2>Europe</h2>
+                            <i class="mg map-wrld-eu"></i></a></li>
+                            <li class="country-selector-col-sm-2"><a id="tab5"><h2>Oceania</h2>
+                                <i class="mg map-wrld-oc"></i></a></li>
+          
+          </ul>
+              
+          <!-- African countries -->
+          <div class="container" id="tab1C">
+                        <div class="country-selector-col-sm-12"><h3>Africa</h3></div>
+            {% for country in countries %}
+            {% if country.code in africa %}
+            <div class="country-selector-col-sm-3 country_selector_country">
+            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
             </div> 
-        <div></div>
-        <div class="country-selector-row country_selector_countries_by_continent country_selector_countries_americas">
+            </div>
+    
+    <!-- American countries -->
+          <div class="container" id="tab2C">
+                        <div class="country-selector-col-sm-12"><h3>America</h3></div>
+            {% for country in countries %}
+            {% if country.code in america %}
+            <div class="country-selector-col-sm-3 country_selector_country">
+            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            </div> 
+            </div>
+    
+            <!-- Asian countries -->
+          <div class="container" id="tab3C">
+                        <div class="country-selector-col-sm-12"><h3>Asia</h3></div>
+            {% for country in countries %}
+            {% if country.code in asia %}
+            <div class="country-selector-col-sm-3 country_selector_country">
+            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            </div> 
+            </div>
+    
+    
+            <!-- Europe countries -->
+          <div class="container" id="tab4C">
+                        <div class="country-selector-col-sm-12"><h3>Europe</h3></div>
+            {% for country in countries %}
+            {% if country.code in europe %}
+            <div class="country-selector-col-sm-3 country_selector_country">
+            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            </div> 
+            </div>
+    
+            <!-- Oceania countries -->
+          <div class="container" id="tab5C">
+                        <div class="country-selector-col-sm-12"><h3>Oceania</h3></div>
+            {% for country in countries %}
+            {% if country.code in oceania %}
+            <div class="country-selector-col-sm-3 country_selector_country">
+            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            </div>
+            {% endif %}
+            {% endfor %}
+            </div> 
+            </div>
+    
+
+</section>
+
+<div>
+    
+</div>
+<section class="container">
+        <div class="country-selector-row country_selector_countries_by_continent country_selector_countries_africa">
         <div class="country-selector-col-sm-12"><h3>Africa</h3></div>
         {% for country in countries %}
         {% if country.code in africa %}
@@ -88,7 +145,11 @@
         {% endif %}
         {% endfor %}
         </div>  
-        <div class="country-selector-col-sm-12"><h3>Americas</h3></div>
+
+       
+        <div class="country-selector-col-sm-12">
+            <a name="america"></a>
+            <h3>Americas</h3></div>
         {% for country in countries %}
         {% if country.code in america %}
         <div class="country-selector-col-sm-3 country_selector_country">
@@ -96,8 +157,12 @@
         </div>
         {% endif %}
         {% endfor %}
-        </div>  
-        <div class="country-selector-col-sm-12"><h3>Asia</h3></div>
+    
+
+        
+        <div class="country-selector-col-sm-12">
+            <a name="asia"></a>
+            <h3>Asia</h3></div>
         {% for country in countries %}
         {% if country.code in asia %}
         <div class="country-selector-col-sm-3 country_selector_country">
@@ -106,7 +171,10 @@
         {% endif %}
         {% endfor %}
         </div>  
-        <div class="country-selector-col-sm-12"><h3>Europe</h3></div>
+
+        <div class="country-selector-col-sm-12">
+            <a name="europe"></a>
+            <h3>Europe</h3></div>
         {% for country in countries %}
         {% if country.code in europe %}
         <div class="country-selector-col-sm-3 country_selector_country">
@@ -114,8 +182,12 @@
         </div>
         {% endif %}
         {% endfor %}
-        </div>  
-        <div class="country-selector-col-sm-12"><h3>Oceania</h3></div>
+        </div> 
+
+        
+        <div class="country-selector-col-sm-12">
+            <a name="oceania"></a>
+            <h3>Oceania</h3></div>
         {% for country in countries %}
         {% if country.code in oceania %}
         <div class="country-selector-col-sm-3 country_selector_country">
@@ -123,7 +195,8 @@
         </div>
         {% endif %}
         {% endfor %}
-        </div>          
+        </div>
+               
         <div class="country-selector-row">
         <hr>
         </div>
@@ -148,11 +221,9 @@
         </div>
     </section>
 
-    {% include 'pagination.html' with queryset=countries custom_range=custom_range %}
+    {% include 'pagination.html' with queryset=countries custom_range=custom_range %} 
 
 </main>
-
-
 
 
 {% endblock %}
