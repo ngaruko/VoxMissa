@@ -2,11 +2,13 @@ from django.db import models
 import uuid
 
 from django.db.models.deletion import CASCADE
+from countries.models import G8Countries
 from users.models import Profile
 # Create your models here.
-
+from django_countries.fields import CountryField
 
 class Project(models.Model):
+    # country = CountryField(countries=G8Countries, null=True)
     owner = models.ForeignKey(
         Profile, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)

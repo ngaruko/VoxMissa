@@ -35,9 +35,6 @@
                             <img class="policy__thumbnail" src="{{policy.imageURL}}" alt="policy thumbnail" />
                             <div class="card__body">
                                 <h3 class="policy__title">{{policy.title}}</h3>
-                                <!-- <p><a class="policy__author" href="{% url 'user-profile' policy.owner.id %}">By
-                                        {{policy.owner.name}}</a>
-                                </p> -->
                                 <p class="policy--rating">
                                     <span style="font-weight: bold;">{{policy.vote_ratio}}%</span> Positive
                                     Feedback ({{policy.vote_total}}) Vote{{policy.vote_total|pluralize:"s"}}

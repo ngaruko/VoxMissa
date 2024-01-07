@@ -9,6 +9,7 @@ from django.db.models import Q
 from .models import Profile, Message
 from .forms import CustomUserCreationForm, ProfileForm, SkillForm, MessageForm
 from .utils import searchProfiles, paginateProfiles
+from django_countries import Countries
 
 
 def loginUser(request):
@@ -75,7 +76,6 @@ def profiles(request):
     context = {'profiles': profiles, 'search_query': search_query,
                'custom_range': custom_range}
     return render(request, 'users/profiles.html', context)
-
 
 def userProfile(request, pk):
     profile = Profile.objects.get(id=pk)

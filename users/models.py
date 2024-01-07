@@ -5,20 +5,8 @@ import uuid
 
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
-from django_countries.fields import CountryField
 from django_countries.widgets import CountrySelectWidget
 from django_countries import countries
-from django.contrib.gis.geoip2 import GeoIP2
-# from django.contrib.gis.db import models
-
-def currency(request):
-    g = GeoIP2()
-    remote_addr = request.META.get('HTTP_X_FORWARDED_FOR')
-    if remote_addr:
-        address = remote_addr.split(',')[-1].strip()
-    else:
-        address = request.META.get('REMOTE_ADDR')
-    return g.country_code(address)
 
 class Profile(models.Model):
     user = models.OneToOneField(
