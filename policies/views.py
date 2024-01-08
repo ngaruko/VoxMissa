@@ -8,6 +8,37 @@ from .forms import PolicyForm, VoteForm
 from .utils import searchPolicies, paginatePolicies
 from django.views.generic.detail import DetailView
 
+from django.http import HttpResponse
+from django.views.generic import ListView
+
+
+
+class PolicyListView(ListView):
+    model = Policy
+    
+    # form_class = MyForm
+    # initial = {"key": "value"}
+    policies = model.objects.all()
+    template_name = "policies/policies.html"
+
+    def get(self, request, *args, **kwargs):
+        # form = self.form_class(initial=self.initial)
+        print('some request')
+        print(request)
+        print(*args)
+        print(**kwargs)
+        policies, search_query = searchPolicies(request)
+        custom_range, policies = paginatePolicies(request, policies, 6)
+        context = {'policies': policies,
+               'search_query': search_query, 'custom_range': custom_range}
+        return render(request, self.template_name, context)
+
+    # def head(self, *args, **kwargs):
+    #     #last_book = self.get_queryset().latest("publication_date")
+    #     response = HttpResponse(
+    #         'something'
+    #     )
+    #     return response
 
 def policies(request):
     policies, search_query = searchPolicies(request)

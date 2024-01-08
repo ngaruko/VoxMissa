@@ -26,7 +26,7 @@
                     Choose your country</a>
                     <div class="country_selector_dropdown-content">
                     {% for country in countries %}
-                    <a href="{% url 'country' country.slug %}" data-country-code="{{ country.code}}">
+                    <a href="{% url 'country' country.code %}" data-country-code="{{ country.code}}">
                     <span class="flag-icon flag-icon-{{ country.code | lower }}"> </span> {{ country.name }}</a>
                     {% endfor %}
                     </div>
@@ -65,12 +65,10 @@
           <!-- African countries -->
           <div class="container" id="tab1C">
                         <div class="country-selector-col-sm-12"><h3>Africa</h3></div>
-            {% for country in countries %}
-            {% if country.code in africa %}
+            {% for country in africa %}
             <div class="country-selector-col-sm-3 country_selector_country">
-            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            <a href="{% url 'country' country.code %}"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
             </div>
-            {% endif %}
             {% endfor %}
             </div> 
             </div>
@@ -78,12 +76,10 @@
     <!-- American countries -->
           <div class="container" id="tab2C">
                         <div class="country-selector-col-sm-12"><h3>America</h3></div>
-            {% for country in countries %}
-            {% if country.code in america %}
+            {% for country in america %}
             <div class="country-selector-col-sm-3 country_selector_country">
-            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            <a href="{% url 'country' country.code %}"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
             </div>
-            {% endif %}
             {% endfor %}
             </div> 
             </div>
@@ -91,12 +87,10 @@
             <!-- Asian countries -->
           <div class="container" id="tab3C">
                         <div class="country-selector-col-sm-12"><h3>Asia</h3></div>
-            {% for country in countries %}
-            {% if country.code in asia %}
+            {% for country in asia %}
             <div class="country-selector-col-sm-3 country_selector_country">
-            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            <a href="{% url 'country' country.code %}"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
             </div>
-            {% endif %}
             {% endfor %}
             </div> 
             </div>
@@ -105,12 +99,10 @@
             <!-- Europe countries -->
           <div class="container" id="tab4C">
                         <div class="country-selector-col-sm-12"><h3>Europe</h3></div>
-            {% for country in countries %}
-            {% if country.code in europe %}
+            {% for country in europe %}
             <div class="country-selector-col-sm-3 country_selector_country">
-            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            <a href="{% url 'country' country.code %}"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
             </div>
-            {% endif %}
             {% endfor %}
             </div> 
             </div>
@@ -118,12 +110,10 @@
             <!-- Oceania countries -->
           <div class="container" id="tab5C">
                         <div class="country-selector-col-sm-12"><h3>Oceania</h3></div>
-            {% for country in countries %}
-            {% if country.code in oceania %}
+            {% for country in oceania %}
             <div class="country-selector-col-sm-3 country_selector_country">
-            <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+            <a href="{% url 'country' country.code %}"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
             </div>
-            {% endif %}
             {% endfor %}
             </div> 
             </div>
@@ -132,7 +122,7 @@
 </section>
 
 <div>
-    
+
 </div>
 <section class="container">
         <div class="country-selector-row country_selector_countries_by_continent country_selector_countries_africa">
@@ -140,7 +130,7 @@
         {% for country in countries %}
         {% if country.code in africa %}
         <div class="country-selector-col-sm-3 country_selector_country">
-        <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+        <a href="{% url 'country' country.code %}"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
         </div>
         {% endif %}
         {% endfor %}
@@ -153,7 +143,7 @@
         {% for country in countries %}
         {% if country.code in america %}
         <div class="country-selector-col-sm-3 country_selector_country">
-        <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+        <a href="{% url 'country' country.code %}"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
         </div>
         {% endif %}
         {% endfor %}
@@ -166,7 +156,7 @@
         {% for country in countries %}
         {% if country.code in asia %}
         <div class="country-selector-col-sm-3 country_selector_country">
-        <a href="{% url 'country' country.slug %}" > <i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+        <a href="{% url 'country' country.code %}" > <i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
         </div>
         {% endif %}
         {% endfor %}
@@ -178,7 +168,7 @@
         {% for country in countries %}
         {% if country.code in europe %}
         <div class="country-selector-col-sm-3 country_selector_country">
-        <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+        <a href="{% url 'country' country.code %}"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
         </div>
         {% endif %}
         {% endfor %}
@@ -191,7 +181,7 @@
         {% for country in countries %}
         {% if country.code in oceania %}
         <div class="country-selector-col-sm-3 country_selector_country">
-        <a href="{% url 'country' country.slug %}"><i class="mg map-ai"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
+        <a href="{% url 'country' country.code %}"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a>
         </div>
         {% endif %}
         {% endfor %}
@@ -212,7 +202,7 @@
         Choose your country</a>
         <div class="country_selector_dropdown-content">
         {% for country in countries %}
-        <a href="{% url 'country' country.slug %}" data-country-code="{{ country.code}}">
+        <a href="{% url 'country' country.code %}" data-country-code="{{ country.code}}">
         <span class="flag-icon flag-icon-{{ country.code | lower }}"> </span> {{ country.name }}</a>
         {% endfor %}
         </div></aside></div>

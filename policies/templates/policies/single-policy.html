@@ -8,7 +8,7 @@
     <div class="container">
         <div class="layout">
             <div class="column column--1of3">
-                <h3 class="singlePolicy__subtitle">Tools & Stacks</h3>
+                <h3 class="singlePolicy__subtitle">{{ policy.country }}</h3>
                 <div class="singlePolicy__toolStack">
                     {% for tag in policy.tags.all %}
                     <span class="tag tag--pill tag--sub tag--lg">

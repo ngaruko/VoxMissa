@@ -1,8 +1,60 @@
-<Html>
-    <main class="layout">
-        <div class="container">
-          Country:{{ country.slug }}
-        </div>
-      </main>
-</Html>
+{% extends 'main.html' %}
 
+{% block content %}
+<title> {{ country.code }}</title>
+
+<!-- Main Section -->
+    <main>
+      {% for res in countries %}
+      {% if res.code == country.code %}
+      <h1><a href="#"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ res.name }}</a></h1> 
+      {% endif %}
+      {% endfor %}
+      
+          <div class="tabs">
+            <ul id="tabs-nav" class="header__menu">
+              <li class="header__menuItem"><a href="#policy-tab">Policies</a></li>
+              <li class="header__menuItem"><a href="#candidates-tab">Candidates</a></li>
+              <li class="header__menuItem"><a href="#programs-tab">Programs</a></li>
+              <li class="header__menuItem"><a href="#forum-tab">Forum</a></li>
+            </ul> <!-- END tabs-nav -->
+            <div id="tabs-content">
+              <div id="policy-tab" class="tab-content">
+                {% include 'partials/policies.html' %}
+              </div>
+              <div id="candidates-tab" class="tab-content">
+                {% include 'partials/profiles.html' %}
+              </div>
+              <div id="programs-tab" class="tab-content">
+                {% include 'partials/projects.html' %}
+               </div>
+              <div id="forum-tab" class="tab-content">
+                {% include 'partials/forum.html' %}
+              </div>
+            </div> <!-- END tabs-content -->
+          </div> <!-- END tabs -->
+        
+
+        </main>
+
+          <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+
+  // Show the first tab and hide the rest
+$('#tabs-nav li:first-child').addClass('active');
+$('.tab-content').hide();
+$('.tab-content:first').show();
+
+// Click function
+$('#tabs-nav li').click(function(){
+  $('#tabs-nav li').removeClass('active');
+  $(this).addClass('active');
+  $('.tab-content').hide();
+  
+  var activeTab = $(this).find('a').attr('href');
+  $(activeTab).fadeIn();
+  return false;
+});
+</script>
+
+{% endblock %}
