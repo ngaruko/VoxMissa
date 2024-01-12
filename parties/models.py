@@ -3,15 +3,22 @@ from django.db import models
 # Create your models here.
 from django.db import models
 import uuid
-
+from django_countries.fields import CountryField
+from django_countries import Countries, countries
 from django.db.models.deletion import CASCADE
 from users.models import Profile
 # Create your models here.
 
 
 class Party(models.Model):
-    title = models.CharField(max_length=200)
+    
+    country = models.CharField(max_length=200, blank=True, null=True, choices=countries)
+    #CountryField(blank_label="(select country)", null=True)
+    owner = models.ForeignKey(
+        Profile, null=True, blank=True, on_delete=models.CASCADE)
+    name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
+    leader = models.CharField(max_length=200)
     featured_image = models.ImageField(
         null=True, blank=True, default="default.jpg")
     demo_link = models.CharField(max_length=2000, null=True, blank=True)
@@ -24,10 +31,10 @@ class Party(models.Model):
                           primary_key=True, editable=False)
 
     def __str__(self):
-        return self.title
+        return self.name
 
     class Meta:
-        ordering = ['-vote_ratio', '-vote_total', 'title']
+        ordering = ['-vote_ratio', '-vote_total', 'name']
         verbose_name_plural = "parties"
 
     @property
@@ -40,7 +47,7 @@ class Party(models.Model):
 
     @property
     def reviewers(self):
-        queryset = self.review_set.all().values_list('owner__id', flat=True)
+        queryset = self.review_set.all().values_list('voter__id', flat=True)
         return queryset
 
     @property
@@ -56,12 +63,12 @@ class Party(models.Model):
         self.save()
 
 
-class Review(models.Model):
+class Vote(models.Model):
     VOTE_TYPE = (
         ('up', 'Up Vote'),
         ('down', 'Down Vote'),
     )
-    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
+    voter = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name='party_voter')
     party = models.ForeignKey(Party, on_delete=models.CASCADE)
     body = models.TextField(null=True, blank=True)
     value = models.CharField(max_length=200, choices=VOTE_TYPE)
@@ -70,7 +77,7 @@ class Review(models.Model):
                           primary_key=True, editable=False)
 
     class Meta:
-        unique_together = [['owner', 'party']]
+        unique_together = [['voter', 'party']]
         
 
     def __str__(self):

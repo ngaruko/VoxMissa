@@ -25,7 +25,7 @@ def party(request, pk):
         form = ReviewForm(request.POST)
         review = form.save(commit=False)
         review.party = partyObj
-        review.owner = request.user.profile
+        review.voter = request.user.profile
         review.save()
 
         partyObj.getVoteCount
@@ -46,7 +46,7 @@ def createParty(request):
         form = PartyForm(request.POST, request.FILES)
         if form.is_valid():
             party = form.save(commit=False)
-            party.owner = profile
+            party.voter = profile
             party.save()
 
             for tag in newtags:

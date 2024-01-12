@@ -10,6 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls')),
     path('policies/', include('policies.urls')),
+    path('parties/', include('parties.urls')),
     path('candidates/', include('forum.urls')),
     path('forum/', include('forum.urls')),
     path('', include('countries.urls')),

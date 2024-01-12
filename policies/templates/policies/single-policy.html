@@ -37,7 +37,7 @@
                 <img class="singlePolicy__preview" src="{{ policy.imageURL }}" alt="portfolio thumbnail" />
                 <a href="{% url 'user-profile' policy.owner.id  %}"
                     class="singlePolicy__developer">{{policy.owner.name}}</a>
-                <h2 class="singlePolicy__title">{{policy.title}}</h2>
+                <h2 class="singlePolicy__title">{{policy.name}}</h2>
                 <h3 class="singlePolicy__subtitle">About the Policy</h3>
                 <div class="singlePolicy__info">
                     {{policy.description}}

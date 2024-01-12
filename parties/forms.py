@@ -1,13 +1,13 @@
 from django.db.models.base import Model
 from django.forms import ModelForm, widgets
 from django import forms
-from .models import Party, Review
+from .models import Party, Vote
 
 
 class PartyForm(ModelForm):
     class Meta:
         model = Party
-        fields = ['title', 'featured_image', 'description',
+        fields = ['country', 'name', 'leader', 'featured_image', 'description',
                   'demo_link', 'source_link']
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
@@ -28,7 +28,7 @@ class PartyForm(ModelForm):
 
 class ReviewForm(ModelForm):
     class Meta:
-        model = Review
+        model = Vote
         fields = ['value', 'body']
 
         labels = {

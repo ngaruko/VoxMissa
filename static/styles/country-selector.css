@@ -1162,3 +1162,18 @@ ul.country_selector_countries {
 .hidden {
   display: none !important;
 }
+
+.results {
+  /* I added this just for fun */
+  background-color: skyblue;
+  color: white;
+  font-family: Century Gothic;
+  padding: 5px;
+  text-align: center;
+
+  /* The code that you need to copy */
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+}

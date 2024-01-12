@@ -8,7 +8,8 @@ from users.models import Profile
 from django_countries.fields import CountryField
 
 class Project(models.Model):
-    # country = CountryField(countries=G8Countries, null=True)
+    country = CountryField(blank_label="(select country)", null=True)
+    # country = models.CharField(max_length=200,  blank =True, null=True, choices=CountryField().choices + [('', 'Select Country')])    
     owner = models.ForeignKey(
         Profile, null=True, blank=True, on_delete=models.CASCADE)
     title = models.CharField(max_length=200)

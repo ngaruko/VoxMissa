@@ -42,7 +42,7 @@ def searchPolicies(request):
     tags = Tag.objects.filter(name__icontains=search_query)
 
     policies = Policy.objects.distinct().filter(
-        Q(title__icontains=search_query) |
+        Q(name__icontains=search_query) |
         Q(description__icontains=search_query) |
         Q(owner__name__icontains=search_query) |
         Q(tags__in=tags)

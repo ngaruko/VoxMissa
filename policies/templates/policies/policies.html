@@ -15,7 +15,7 @@
                     <div class="form__field">
                         <label for="formInput#search">Search By Policies </label>
                         <input class="input input--text" id="formInput#search" type="text" name="search_query"
-                            placeholder="Search by Policy Title" value="{{search_query}}" />
+                            placeholder="Search by Policy Name" value="{{search_query}}" />
                     </div>
 
                     <input class="btn btn--sub btn--lg" type="submit" value="Search" />
@@ -34,7 +34,7 @@
                         <a href="{% url 'policy' policy.id %}" class="policy">
                             <img class="policy__thumbnail" src="{{policy.imageURL}}" alt="policy thumbnail" />
                             <div class="card__body">
-                                <h3 class="policy__title">{{policy.title}}</h3>
+                                <h3 class="policy__title">{{policy.name}}</h3>
                                 <p class="policy--rating">
                                     <span style="font-weight: bold;">{{policy.vote_ratio}}%</span> Positive
                                     Feedback ({{policy.vote_total}}) Vote{{policy.vote_total|pluralize:"s"}}

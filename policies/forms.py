@@ -7,7 +7,7 @@ from .models import Policy, Vote
 class PolicyForm(ModelForm):
     class Meta:
         model = Policy
-        fields = ['title', 'featured_image', 'description',
+        fields = ['country', 'name', 'featured_image', 'description',
                   'demo_link', 'source_link']
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),

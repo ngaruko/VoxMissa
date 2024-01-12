@@ -5,7 +5,6 @@ from django.db import models
 import uuid
 
 from django.db.models.deletion import CASCADE
-from countries.models import G8Countries
 from users.models import Profile
 # Create your models here.
 from django_countries.fields import CountryField
@@ -15,10 +14,9 @@ from django.conf import settings
 
 class Policy(models.Model):
     country = models.CharField(max_length=200, blank=True, null=True, choices=countries)
-    #country = CountryField(countries=G8Countries, null=True)
     owner = models.ForeignKey(
         Profile, null=True, blank=True, on_delete=models.CASCADE)
-    title = models.CharField(max_length=200)
+    name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     featured_image = models.ImageField(
         null=True, blank=True, default="default.jpg")
@@ -33,10 +31,10 @@ class Policy(models.Model):
                           primary_key=True, editable=False)
 
     def __str__(self):
-        return self.title
+        return self.name
 
     class Meta:
-        ordering = ['-vote_ratio', '-vote_total', 'title']
+        ordering = ['-vote_ratio', '-vote_total', 'name']
         verbose_name_plural = "policies"
 
     @property

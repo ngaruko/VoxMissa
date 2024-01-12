@@ -43,10 +43,12 @@ INSTALLED_APPS = [
     'policies.apps.PoliciesConfig',
     'forum.apps.ForumConfig',
     'countries.apps.CountriesConfig',
+    'parties.apps.PartiesConfig',
 
     'rest_framework',
     'corsheaders',
-    'storages'
+    'storages',
+    'django_countries'
 
 ]
 

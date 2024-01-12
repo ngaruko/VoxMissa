@@ -3,19 +3,19 @@ from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 
-def paginateProjects(request, projects, results):
+def paginateParties(request, parties, results):
 
     page = request.GET.get('page')
-    paginator = Paginator(projects, results)
+    paginator = Paginator(parties, results)
 
     try:
-        projects = paginator.page(page)
+        parties = paginator.page(page)
     except PageNotAnInteger:
         page = 1
-        projects = paginator.page(page)
+        parties = paginator.page(page)
     except EmptyPage:
         page = paginator.num_pages
-        projects = paginator.page(page)
+        parties = paginator.page(page)
 
     leftIndex = (int(page) - 4)
 
@@ -29,10 +29,10 @@ def paginateProjects(request, projects, results):
 
     custom_range = range(leftIndex, rightIndex)
 
-    return custom_range, projects
+    return custom_range, parties
 
 
-def searchProjects(request):
+def searchParties(request):
 
     search_query = ''
 
@@ -41,10 +41,10 @@ def searchProjects(request):
 
     tags = Tag.objects.filter(name__icontains=search_query)
 
-    projects = Party.objects.distinct().filter(
-        Q(title__icontains=search_query) |
+    parties = Party.objects.distinct().filter(
+        Q(name__icontains=search_query) |
         Q(description__icontains=search_query) |
-        Q(owner__name__icontains=search_query) |
+        Q(voter__name__icontains=search_query) |
         Q(tags__in=tags)
     )
-    return projects, search_query
+    return parties, search_query

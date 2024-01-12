@@ -1,24 +1,45 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<title> {{ country.code }}</title>
+<title> {{ country.name }} </title>
+
 
 <!-- Main Section -->
     <main>
-      {% for res in countries %}
-      {% if res.code == country.code %}
-      <h1><a href="#"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ res.name }}</a></h1> 
-      {% endif %}
-      {% endfor %}
+    <section>
+      <div style="display: inline-block;">
+        <h2><a href="#"><i class="mg map-{{ country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ country.code |lower }} circle"></span>{{ country.name }}</a></h2>
+
+      </div>
+      <div style="float: right;">
+        <div class="country_selector_dropdown" >
+          <div><a href="#" class="country_selector_dropbtn" style="text-align: right;"><span class="flag-icon flag-icon-un"></span> 
+            Switch country</a>
+            <div class="country_selector_dropdown-content">
+            {% for country in countries %}
+            <a href="{% url 'country' country.code %}" data-country-code="{{ country.code}}">
+            <span class="flag-icon flag-icon-{{ country.code | lower }}"> </span> {{ country.name }}</a>
+            {% endfor %}
+            </div>
+            </div>
+          </div>
+
+        </div>
+    </section>
+
       
           <div class="tabs">
             <ul id="tabs-nav" class="header__menu">
+              <li class="header__menuItem"><a href="#party-tab">Parties</a></li>
               <li class="header__menuItem"><a href="#policy-tab">Policies</a></li>
               <li class="header__menuItem"><a href="#candidates-tab">Candidates</a></li>
               <li class="header__menuItem"><a href="#programs-tab">Programs</a></li>
               <li class="header__menuItem"><a href="#forum-tab">Forum</a></li>
             </ul> <!-- END tabs-nav -->
             <div id="tabs-content">
+              <div id="party-tab" class="tab-content">
+                {% include 'partials/parties.html' %}
+              </div>
               <div id="policy-tab" class="tab-content">
                 {% include 'partials/policies.html' %}
               </div>

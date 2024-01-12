@@ -20,8 +20,6 @@ class Country(models.Model):
     name = models.CharField(max_length=20)
     code = models.TextField(max_length=5)
     slug = models.TextField(null=True)
-    #all_countries = Countries()
-    # call_countries = Countries(only=(("CA", "Canada"), ("US", "United States of America")))
 
     def __str__(self):
         return self.name

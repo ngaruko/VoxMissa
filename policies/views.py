@@ -13,25 +13,25 @@ from django.views.generic import ListView
 
 
 
-class PolicyListView(ListView):
-    model = Policy
+# class PolicyListView(ListView):
+#     model = Policy
     
-    # form_class = MyForm
-    # initial = {"key": "value"}
-    policies = model.objects.all()
-    template_name = "policies/policies.html"
+#     # form_class = MyForm
+#     # initial = {"key": "value"}
+#     policies = model.objects.all()
+#     template_name = "policies/policies.html"
 
-    def get(self, request, *args, **kwargs):
-        # form = self.form_class(initial=self.initial)
-        print('some request')
-        print(request)
-        print(*args)
-        print(**kwargs)
-        policies, search_query = searchPolicies(request)
-        custom_range, policies = paginatePolicies(request, policies, 6)
-        context = {'policies': policies,
-               'search_query': search_query, 'custom_range': custom_range}
-        return render(request, self.template_name, context)
+#     def get(self, request, *args, **kwargs):
+#         # form = self.form_class(initial=self.initial)
+#         print('some request')
+#         print(request)
+#         print(*args)
+#         print(**kwargs)
+#         policies, search_query = searchPolicies(request)
+#         custom_range, policies = paginatePolicies(request, policies, 6)
+#         context = {'policies': policies,
+#                'search_query': search_query, 'custom_range': custom_range}
+#         return render(request, self.template_name, context)
 
     # def head(self, *args, **kwargs):
     #     #last_book = self.get_queryset().latest("publication_date")
