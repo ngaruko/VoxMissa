@@ -7,9 +7,9 @@
     <div class="container">
         <div class="layout">
             <div class="column column--1of3">
-                <h3 class="singleParty__subtitle">Tools & Stacks</h3>
+                <h3>{{ party.name }}</h3>
                 <div class="singleParty__toolStack">
-                    {% for tag in party.tags.all %}
+                    {% for tag in party.ideologies.all %}
                     <span class="tag tag--pill tag--sub tag--lg">
                         <small>{{tag}}</small>
                     </span>
@@ -17,15 +17,15 @@
 
                 </div>
 
-                {% if party.source_link %}
-                <a class="singleParty__liveLink" href="{{party.source_link}}" target="_blank"><i
+                {% if party.website %}
+                <a class="singleParty__liveLink" href="{{party.website}}" target="_blank"><i
                         class="im im-external-link"></i>Source
                     Code
                 </a>
                 {% endif %}
 
-                {% if party.demo_link %}
-                <a class="singleParty__liveLink" href="{{party.source_link}}" target="_blank"><i
+                {% if party.website %}
+                <a class="singleParty__liveLink" href="{{party.website}}" target="_blank"><i
                         class="im im-external-link"></i>Live Demo
 
                 </a>

@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Party, Tag
+from .models import Party, Ideology
 from .forms import PartyForm, ReviewForm
 from .utils import searchParties, paginateParties
 
@@ -46,11 +46,11 @@ def createParty(request):
         form = PartyForm(request.POST, request.FILES)
         if form.is_valid():
             party = form.save(commit=False)
-            party.voter = profile
+            party.owner = profile
             party.save()
 
             for tag in newtags:
-                tag, created = Tag.objects.get_or_create(name=tag)
+                tag, created = Ideology.objects.get_or_create(name=tag)
                 party.tags.add(tag)
             return redirect('account')
 
@@ -71,7 +71,7 @@ def updateParty(request, pk):
         if form.is_valid():
             party = form.save()
             for tag in newtags:
-                tag, created = Tag.objects.get_or_create(name=tag)
+                tag, created = Ideology.objects.get_or_create(name=tag)
                 party.tags.add(tag)
 
             return redirect('account')

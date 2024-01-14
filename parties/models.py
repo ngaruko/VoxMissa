@@ -7,23 +7,22 @@ from django_countries.fields import CountryField
 from django_countries import Countries, countries
 from django.db.models.deletion import CASCADE
 from users.models import Profile
+from policies.models import Policy
 # Create your models here.
 
 
 class Party(models.Model):
-    
-    country = models.CharField(max_length=200, blank=True, null=True, choices=countries)
-    #CountryField(blank_label="(select country)", null=True)
+    country = CountryField(blank_label="(select country)", null=True)
     owner = models.ForeignKey(
-        Profile, null=True, blank=True, on_delete=models.CASCADE)
+        Profile, null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=200)
+    acronym = models.CharField(max_length=10, null=True, blank=True)
+    leader = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    leader = models.CharField(max_length=200)
-    featured_image = models.ImageField(
-        null=True, blank=True, default="default.jpg")
-    demo_link = models.CharField(max_length=2000, null=True, blank=True)
-    source_link = models.CharField(max_length=2000, null=True, blank=True)
-    tags = models.ManyToManyField('Tag', blank=True)
+    official_logo = models.ImageField(
+        null=True, blank=True, default="party_logo.jpg")
+    website = models.CharField(max_length=2000, null=True, blank=True)
+    ideologies = models.ManyToManyField('Ideology', blank=True, null=True)
     vote_total = models.IntegerField(default=0, null=True, blank=True)
     vote_ratio = models.IntegerField(default=0, null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
@@ -40,7 +39,7 @@ class Party(models.Model):
     @property
     def imageURL(self):
         try:
-            url = self.featured_image.url
+            url = self.offial_logo.url
         except:
             url = ''
         return url
@@ -84,11 +83,14 @@ class Vote(models.Model):
         return self.value
 
 
-class Tag(models.Model):
+class Ideology(models.Model):
     name = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
+
+    class Meta:
+        verbose_name_plural = "ideologies"
 
     def __str__(self):
         return self.name
@@ -106,3 +108,41 @@ class Candidate(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Policy(models.Model):
+    owner = models.ForeignKey(
+        Party, on_delete=models.CASCADE, null=True, blank=True)
+    category = models.ForeignKey(
+        Policy, on_delete=models.CASCADE, null=True, blank=True)
+    name = models.CharField(max_length=200, blank=True, null=True)
+    description = models.TextField(null=True, blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
+
+    class Meta:
+        verbose_name_plural = "policies"
+    
+    def __str__(self):
+        return str(self.name)
+
+
+class Message(models.Model):
+    sender = models.ForeignKey(
+        Party, on_delete=models.SET_NULL, null=True, blank=True, related_name='representative')
+    recipient = models.ForeignKey(
+        Profile, on_delete=models.SET_NULL, null=True, blank=True, related_name="citizen")
+    name = models.CharField(max_length=200, null=True, blank=True)
+    email = models.EmailField(max_length=200, null=True, blank=True)
+    subject = models.CharField(max_length=200, null=True, blank=True)
+    body = models.TextField()
+    is_read = models.BooleanField(default=False, null=True)
+    created = models.DateTimeField(auto_now_add=True)
+    id = models.UUIDField(default=uuid.uuid4, unique=True,
+                          primary_key=True, editable=False)
+
+    def __str__(self):
+        return self.subject
+
+    class Meta:
+        ordering = ['is_read', '-created']

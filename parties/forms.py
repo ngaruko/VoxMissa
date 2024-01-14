@@ -7,10 +7,10 @@ from .models import Party, Vote
 class PartyForm(ModelForm):
     class Meta:
         model = Party
-        fields = ['country', 'name', 'leader', 'featured_image', 'description',
-                  'demo_link', 'source_link']
+        fields = ['country', 'name', 'acronym', 'leader', 'official_logo', 'description',
+                  'website', 'ideologies']
         widgets = {
-            'tags': forms.CheckboxSelectMultiple(),
+            'ideologies': forms.CheckboxSelectMultiple(),
         }
 
     def __init__(self, *args, **kwargs):

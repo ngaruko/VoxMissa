@@ -34,7 +34,7 @@
                         <a href="{% url 'party' party.id %}" class="party">
                             <img class="party__thumbnail" src="{{party.imageURL}}" alt="party thumbnail" />
                             <div class="card__body">
-                                <h3 class="party__title">{{party.title}}</h3>
+                                <h3 class="party__title">{{party.name}}</h3>
                                 <p><a class="party__author" href="{% url 'user-profile' party.owner.id %}">By
                                         {{party.owner.name}}</a>
                                 </p>
@@ -43,7 +43,7 @@
                                     Feedback ({{party.vote_total}}) Vote{{party.vote_total|pluralize:"s"}}
                                 </p>
                                 <div class="party__tags">
-                                    {% for tag in party.tags.all %}
+                                    {% for tag in party.ideologies.all %}
                                     <span class="tag tag--pill tag--main">
                                         <small>{{tag}}</small>
                                     </span>

@@ -9,12 +9,15 @@ from users.models import Profile
 from .models import Country
 from django.utils.text import slugify
 from policies.models import Policy
+import json
+from django.core.serializers.json import DjangoJSONEncoder
 
 ###
 from django.core import paginator
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .utils import searchCountries
+from .utils import searchCountries              
+
 
 def countries(request):
     results, search_query = searchCountries(request)
@@ -23,7 +26,8 @@ def countries(request):
     #         country['slug'] = slugify(country['name'])
 
 
-    africa  = [country for country in Countries() if country.code in ['AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CF', 'CG', 'CI', 'CM', 'CV', 'DJ', 'DZ', 'EG', 'ER', 'ES', 'ET', 'GA', 'GH',
+    #africa minus uniparty countries: CM for Cameroon
+    africa  = [country for country in Countries() if country.code in ['AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CF', 'CG', 'CI', 'CM', 'CV', 'DJ', 'DZ', 'EG', 'ER', 'ET', 'GA', 'GH',
         'GM', 'GN', 'GQ', 'GW', 'KE', 'KM', 'LS', 'LR', 'LY', 'MA', 'MG', 'ML', 'MR', 'MU', 'MW', 'MZ', 'NA', 'NE', 'NG', 'RW',
         'SC', 'SD', 'SH', 'SL', 'SN', 'SO', 'SS', 'ST', 'SZ', 'TD', 'TG', 'TN', 'TZ', 'UG', 'ZA', 'ZM', 'ZW' ]]
     
@@ -56,16 +60,25 @@ def countries(request):
             'search_query':search_query
     }
 
+    #Test data scrapped from wikipedia > political parties
+#     data =[]
+#     for country in dict(africa).values():
+#        data.append(getParties(country))
+#     print(data)
+    # with open("fixtures/country.json", "w") as outfile:
+    #     json.dump(data, outfile, cls=DjangoJSONEncoder)
+
     return render(request, 'countries/countries.html', context)
 
 
 
 def country(request, code):
-    countryObj = [country for country in  Countries() if country.code ==code][0]    
+    countryObj = [country for country in  Countries() if country.code ==code][0] 
+    print(countryObj)   
     candidates = Profile.objects.all()
     programs = Project.objects.filter(country__name=countryObj.name)
     policies = Project.objects.filter(country__name=countryObj.name)
-    parties = Party.objects.all() #Placeholder
+    parties = Party.objects.filter(country__name=countryObj.name)
    
     context = {'countries': Countries(), 'country': countryObj, 'policies': policies, 'projects': programs, 
                'profiles':candidates, 'parties': parties}

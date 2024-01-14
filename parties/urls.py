@@ -3,7 +3,7 @@ from . import views
 
 urlpatterns = [
     path('', views.parties, name="parties"),
-    path('party/<str:party_id>/', views.party, name="party"),
+    path('party/<str:pk>/', views.party, name="party"),
     # path('party/<str:party_id>/subtopics', views.subtopics, name="subtopics"),
     # path('party/<str:party_id>/subtopics/subtopic/<str:subtopic_id>/', views.subtopic, name="subtopic"),
 
