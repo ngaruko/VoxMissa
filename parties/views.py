@@ -3,10 +3,9 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Party, Ideology
+from .models import Party, Tag
 from .forms import PartyForm, ReviewForm
 from .utils import searchParties, paginateParties
-
 
 def parties(request):
     parties, search_query = searchParties(request)
@@ -50,7 +49,7 @@ def createParty(request):
             party.save()
 
             for tag in newtags:
-                tag, created = Ideology.objects.get_or_create(name=tag)
+                tag, created = Tag.objects.get_or_create(name=tag)
                 party.tags.add(tag)
             return redirect('account')
 
@@ -71,7 +70,7 @@ def updateParty(request, pk):
         if form.is_valid():
             party = form.save()
             for tag in newtags:
-                tag, created = Ideology.objects.get_or_create(name=tag)
+                tag, created = Tag.objects.get_or_create(name=tag)
                 party.tags.add(tag)
 
             return redirect('account')

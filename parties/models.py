@@ -12,7 +12,10 @@ from policies.models import Policy
 
 
 class Party(models.Model):
+    # country = models.CharField(max_length=200,  null=True, choices=CountryField().choices + [('', 'Select Country')])
     country = CountryField(blank_label="(select country)", null=True)
+    #ßcountry = models.CharField(max_length=200,  null=True, choices=CountryField().choices + [('', 'Select Country')])
+
     owner = models.ForeignKey(
         Profile, null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=200)
@@ -22,10 +25,11 @@ class Party(models.Model):
     official_logo = models.ImageField(
         null=True, blank=True, default="party_logo.jpg")
     website = models.CharField(max_length=2000, null=True, blank=True)
-    ideologies = models.ManyToManyField('Ideology', blank=True, null=True)
+    tags = models.ManyToManyField('Tag', blank=True, null=True)
+    ideology =  models.CharField(max_length=200, null=True, blank=True)
     vote_total = models.IntegerField(default=0, null=True, blank=True)
     vote_ratio = models.IntegerField(default=0, null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
 
@@ -71,7 +75,7 @@ class Vote(models.Model):
     party = models.ForeignKey(Party, on_delete=models.CASCADE)
     body = models.TextField(null=True, blank=True)
     value = models.CharField(max_length=200, choices=VOTE_TYPE)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
 
@@ -83,14 +87,12 @@ class Vote(models.Model):
         return self.value
 
 
-class Ideology(models.Model):
+class Tag(models.Model):
     name = models.CharField(max_length=200)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
 
-    class Meta:
-        verbose_name_plural = "ideologies"
 
     def __str__(self):
         return self.name
@@ -102,7 +104,7 @@ class Candidate(models.Model):
     name = models.CharField(max_length=200)
     bio = models.TextField(null=True, blank=True)
 
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
 
@@ -116,7 +118,7 @@ class Policy(models.Model):
         Policy, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200, blank=True, null=True)
     description = models.TextField(null=True, blank=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
 
@@ -137,7 +139,7 @@ class Message(models.Model):
     subject = models.CharField(max_length=200, null=True, blank=True)
     body = models.TextField()
     is_read = models.BooleanField(default=False, null=True)
-    created = models.DateTimeField(auto_now_add=True)
+    created = models.DateTimeField(auto_now_add=True, null=True, blank=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True,
                           primary_key=True, editable=False)
 

@@ -25,7 +25,8 @@
     </section>
     <!-- Search Result: DevList -->
     <section class="partiesList">
-        <div class="container">
+        <div class="container-parties">
+            {{ party.name.nane }}
             <div class="grid grid--three">
 
                 {% for party in parties %}
@@ -35,15 +36,16 @@
                             <img class="party__thumbnail" src="{{party.imageURL}}" alt="party thumbnail" />
                             <div class="card__body">
                                 <h3 class="party__title">{{party.name}}</h3>
-                                <p><a class="party__author" href="{% url 'user-profile' party.owner.id %}">By
-                                        {{party.owner.name}}</a>
+                                <p>
+                                    Leader : {{party.leader}}
+                        
                                 </p>
                                 <p class="party--rating">
                                     <span style="font-weight: bold;">{{party.vote_ratio}}%</span> Positive
                                     Feedback ({{party.vote_total}}) Vote{{party.vote_total|pluralize:"s"}}
                                 </p>
                                 <div class="party__tags">
-                                    {% for tag in party.ideologies.all %}
+                                    {% for tag in party.tags.all %}
                                     <span class="tag tag--pill tag--main">
                                         <small>{{tag}}</small>
                                     </span>

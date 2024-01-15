@@ -16,7 +16,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.core import paginator
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .utils import searchCountries              
+from .utils import searchCountries, getParties              
 
 
 def countries(request):
@@ -29,7 +29,7 @@ def countries(request):
     #africa minus uniparty countries: CM for Cameroon
     africa  = [country for country in Countries() if country.code in ['AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CF', 'CG', 'CI', 'CM', 'CV', 'DJ', 'DZ', 'EG', 'ER', 'ET', 'GA', 'GH',
         'GM', 'GN', 'GQ', 'GW', 'KE', 'KM', 'LS', 'LR', 'LY', 'MA', 'MG', 'ML', 'MR', 'MU', 'MW', 'MZ', 'NA', 'NE', 'NG', 'RW',
-        'SC', 'SD', 'SH', 'SL', 'SN', 'SO', 'SS', 'ST', 'SZ', 'TD', 'TG', 'TN', 'TZ', 'UG', 'ZA', 'ZM', 'ZW' ]]
+        'SC', 'SD', 'SL', 'SN', 'SO', 'SS', 'ST', 'SZ', 'TD', 'TG', 'TN', 'TZ', 'UG', 'ZA', 'ZM', 'ZW' ]]
     
     america = [country for country in Countries() if country.code in ['AG', 'AR', 'BS', 'BB', 'BZ', 'BM', 'BO', 'BR', 'CA', 'CL', 'CO', 'CR', 'CU', 'DM', 'DO', 'EC', 'SV', 'GD', 'GT', 
             'GY', 'HT', 'HN', 'JM', 'MX', 'NI', 'PA', 'PY', 'PE', 'PR', 'KN', 'LC', 'VC', 'SR', 'TT', 'US', 'UY', 'VE'
@@ -61,12 +61,11 @@ def countries(request):
     }
 
     #Test data scrapped from wikipedia > political parties
-#     data =[]
-#     for country in dict(africa).values():
-#        data.append(getParties(country))
-#     print(data)
-    # with open("fixtures/country.json", "w") as outfile:
-    #     json.dump(data, outfile, cls=DjangoJSONEncoder)
+    #getParties(africa)
+    #Party.objects.all().delete()
+    
+#     with open("fixtures/country.json", "w") as outfile:
+#         json.dump(data, outfile, cls=DjangoJSONEncoder)
 
     return render(request, 'countries/countries.html', context)
 
@@ -74,11 +73,12 @@ def countries(request):
 
 def country(request, code):
     countryObj = [country for country in  Countries() if country.code ==code][0] 
-    print(countryObj)   
+    print('Page: ' + countryObj.name)   
     candidates = Profile.objects.all()
     programs = Project.objects.filter(country__name=countryObj.name)
     policies = Project.objects.filter(country__name=countryObj.name)
     parties = Party.objects.filter(country__name=countryObj.name)
+    
    
     context = {'countries': Countries(), 'country': countryObj, 'policies': policies, 'projects': programs, 
                'profiles':candidates, 'parties': parties}

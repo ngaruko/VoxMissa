@@ -236,3 +236,4 @@ local_settings.py
 db.sqlite3
 playground.py
 fixtures/
+country.json

@@ -1,4 +1,4 @@
-from .models import Party, Ideology
+from .models import Party, Tag
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -39,13 +39,11 @@ def searchParties(request):
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
 
-    ideologies = Ideology.objects.filter(name__icontains=search_query)
+    tags = Tag.objects.filter(name__icontains=search_query)
 
     parties = Party.objects.distinct().filter(
         Q(name__icontains=search_query) |
         Q(acronym__icontains=search_query) |
-        Q(description__icontains=search_query) |
-        Q(leader__icontains=search_query) |
-        Q(ideologies__in=ideologies)
+        Q(leader__icontains=search_query) 
     )
     return parties, search_query

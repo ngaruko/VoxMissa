@@ -8,9 +8,9 @@ class PartyForm(ModelForm):
     class Meta:
         model = Party
         fields = ['country', 'name', 'acronym', 'leader', 'official_logo', 'description',
-                  'website', 'ideologies']
+                  'website', 'ideology']
         widgets = {
-            'ideologies': forms.CheckboxSelectMultiple(),
+            'tags': forms.CheckboxSelectMultiple(),
         }
 
     def __init__(self, *args, **kwargs):

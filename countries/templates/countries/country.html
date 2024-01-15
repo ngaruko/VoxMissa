@@ -2,8 +2,6 @@
 
 {% block content %}
 <title> {{ country.name }} </title>
-
-
 <!-- Main Section -->
     <main>
     <section>
@@ -17,6 +15,7 @@
             Switch country</a>
             <div class="country_selector_dropdown-content">
             {% for country in countries %}
+            
             <a href="{% url 'country' country.code %}" data-country-code="{{ country.code}}">
             <span class="flag-icon flag-icon-{{ country.code | lower }}"> </span> {{ country.name }}</a>
             {% endfor %}

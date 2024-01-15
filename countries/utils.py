@@ -6,27 +6,21 @@ from django.utils.text import slugify
 from django.conf import settings
 import wikipediaapi
 import uuid
+import json
+import re
+from django.core.serializers.json import DjangoJSONEncoder
 
 def searchCountries(request):
 
-    search_query = ''
+    search_query = ""
 
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query').strip()
         print('query:' + search_query + 'no')
 
-    countryss = [country._asdict() for country in Countries()]
     results = [] if not(search_query) else [country for country in Countries() if search_query.casefold() in country.name.casefold()
                or search_query.casefold() in country.code.casefold()]
-    # for country in results:
-    #     print(country)
-    #countries = [(record.name, record.code) for record in Countries() if record.code == "NZ"] #[country for country in Countries().items()]
-    # for country in countries:
-    #         country['slug'] = 'congo-dr' if country['code'] =='CD' else slugify(country['name'])
-    # countries = countrys.filter(
-    #     Q(name__icontains=search_query) |
-    #     Q(code__icontains=search_query) 
-    # ) 
+    
     return results, search_query
 
 ### test wiki
@@ -35,84 +29,86 @@ import requests # library to handle requests
 from bs4 import BeautifulSoup # library to parse HTML documents
 
 ESWATINI = [
-    
-    {'Country':'Eswatini', 'Name': 'African United Democratic Party (AUDP)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Communist Party of Swaziland (CPS)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Economic Freedom Fighters of Swaziland (EFF)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Inhlava Party (previously Inhlava Forum)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Maxter Political Party', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Ngwane National Liberatory Congress (NNLC)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Ngwane Socialist Revolutionary Party (NGWASOREP)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Owen Murray Party', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': "Peoples' United Democratic Movement (PUDEMO)", 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Sive Siyinqaba National Movement', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Swaziland Liberation Movement (SWALIMO)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Swazi Democratic Party (SWADEPA)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Swaziland National Front (SWANAFRO)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Eswatini', 'Name': 'Swaziland National Progressive Party (SNPP)', 'Acronym': '', 'Leader': '', 'Ideology': ''}
+    {"name": "African United Democratic Party (AUDP)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Communist Party of Swaziland (CPS)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Economic Freedom Fighters of Swaziland (EFF)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Inhlava Party (previously Inhlava Forum)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Maxter Political Party", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Ngwane National Liberatory Congress (NNLC)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Ngwane Socialist Revolutionary Party (NGWASOREP)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Owen Murray Party", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Peoples' United Democratic Movement (PUDEMO)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Sive Siyinqaba National Movement", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Swaziland Liberation Movement (SWALIMO)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Swazi Democratic Party (SWADEPA)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Swaziland National Front (SWANAFRO)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Swaziland National Progressive Party (SNPP)", "acronym": "", "leader": "", "ideology": ""}
 ]
 
 LIBYA = [
-    {'Country':'Libya', 'Name': 'National Forces Alliance', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Justice and Construction Party', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'National Front Party', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Wadi al-Hiya Alliance', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Union for Homeland', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'National Centrist Party', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Libyan National Democratic Party', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'The Message', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'The Foundation', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'National Party for Development and Welfare', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Nation & Prosperity', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Authenticity & Renewal', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Authenticity & Progress', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Moderate Umma Assembly', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Libik Watani', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'National Gathering of Wadi al-Shati', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Moderate Youth Party', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Libyan List for Freedom & Development', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'National Coalition of Parties', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Libya the Hope', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Libya', 'Name': 'Wisdom Party', 'Acronym': '[1]', 'Leader': '', 'Ideology': ''}
+    {"name": "National Forces Alliance", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Justice and Construction Party", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "National Front Party", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Wadi al-Hiya Alliance", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Union for Homeland", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "National Centrist Party", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Libyan National Democratic Party", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "The Message", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "The Foundation", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "National Party for Development and Welfare", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Nation & Prosperity", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Authenticity & Renewal", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Authenticity & Progress", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Moderate Umma Assembly", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Libik Watani", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "National Gathering of Wadi al-Shati", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Moderate Youth Party", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Libyan List for Freedom & Development", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "National Coalition of Parties", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Libya the Hope", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Wisdom Party", "acronym": "[1]", "leader": "", "ideology": ""}
 ]
 
 SUDAN = [
-    {'Country':'Sudan', 'Name': 'Democratic Unionist Party (Al Hizb Al-Ittihadi Al-Dimuqrati)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Umma Party (Hizb al-Umma)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Umma Party (Reform and Renewal)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Omom Party', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Sudanese Congress Party (SCP or SCoP) (Hizb al-Mu’tamar al-Sudani)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Popular Congress Party (Al-Mu\'tamar al-Sha’bi)[1]', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Sudanese Ba\'ath Party (Hizb al-Ba\'ath as-Sudani)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Sudanese Communist Party (Al-Hizb al-Shuyui al-Sudani)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Arab Socialist Ba\'ath Party – Organisation[2]', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Arab Socialist Ba\'ath Party – Country[3]', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Liberal Party of Sudan (Al-Hizb Al-Librali)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Binaa Sudan Party (Hizb Binaa Al Sudan) [1]', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Liberal Democrats (Hizb Al-Demokhrateen Al-Ahrar)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Nubian Front of Liberation (Jabhat al-Tahrir al-Nuwbia)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'National Democratic Alliance[4]', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Sudan National Alliance [2]', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'The National Reform Party [3]', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Sudanese Unity National Party (S.U.N. PARTY)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Islamic Socialist Party', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Free People Party (FPP)', 'Acronym': '', 'Leader': '', 'Ideology': ''},
-    {'Country':'Sudan', 'Name': 'Sudan Democratic Progressive Party', 'Acronym': '', 'Leader': '', 'Ideology': ''}
+    {"name": "Democratic Unionist Party (Al Hizb Al-Ittihadi Al-Dimuqrati)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Umma Party (Hizb al-Umma)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Umma Party (Reform and Renewal)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Omom Party", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Sudanese Congress Party (SCP or SCoP) (Hizb al-Mu’tamar al-Sudani)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Popular Congress Party (Al-Mu'tamar al-Sha’bi)[1]", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Sudanese Ba'ath Party (Hizb al-Ba'ath as-Sudani)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Sudanese Communist Party (Al-Hizb al-Shuyui al-Sudani)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Arab Socialist Ba'ath Party – Organisation[2]", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Arab Socialist Ba'ath Party – Country[3]", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Liberal Party of Sudan (Al-Hizb Al-Librali)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Binaa Sudan Party (Hizb Binaa Al Sudan) [1]", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Liberal Democrats (Hizb Al-Demokhrateen Al-Ahrar)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Nubian Front of Liberation (Jabhat al-Tahrir al-Nuwbia)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "National Democratic Alliance[4]", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Sudan National Alliance [2]", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "The National Reform Party [3]", "acronym": "", "leader": "", "ideology": ""},
+
+    {"name": "Sudanese Unity National Party (S.U.N. PARTY)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Islamic Socialist Party", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "PermissionErrorFree People Party (FPP)", "acronym": "", "leader": "", "ideology": ""},
+    {"name": "Sudan Democratic Progressive Party", "acronym": "", "leader": "", "ideology": ""}
 ]
 
 data =[]
-
 def create_acronym(phrase):
         acronym = ""
-        print('ACRONYM>>>>:' + phrase)
-        words = phrase.split()
+        name = re.sub('[^A-Za-z0-9]+', ' ', phrase)
+        words = name.split()
         words = [word for word in words if len(word) > 2 and word.isalpha]
         for word in words:
+            
             acronym += word[0].upper()
         return acronym
 
 def getData(soup, country):
-    match country:
+    country_name = country.name
+    print ('checking for....' + country_name)
+    match country.name:
         case'Chad' | 'Mali':
           
             uls = []
@@ -122,127 +118,126 @@ def getData(soup, country):
                     uls.append(nextSibling)
             for ul in uls:
                 for li in ul.findAll('i'):
-                    el = {'Country':country, 'Name':li.text, 'Leader': '', 'Acronym': create_acronym(li.text) }
-                    el2 = build_fixture(el)
-                    print(el)
-                    data.append(el)
-                    return el2
+                    el = {"name":li.text, "leader": "", "acronym": create_acronym(li.text), "ideology": "No Data Avalable" }
+                    el2 = build_fixture(el, country)
+                    data.append(el2)
             # return data 
 
-    match country:
         case'Eswatini':
-            for country in ESWATINI:
+            for el in ESWATINI:
                 
-                return build_fixture(country)
+                el2 = build_fixture(el, country)
+                data.append(el2)
 
-    match country:
+                
+
         case'Libya':
-            for country in LIBYA:
-                #build_fixture(country)
-                return build_fixture(country)
+            for el in LIBYA:
+                el2 = build_fixture(el, country)
+                data.append(el2)
 
-    match country:
         case'Sudan':
-            for country in SUDAN:
-                return build_fixture(country)
+            for el in SUDAN:
+                el2 = build_fixture(el, country)
+                data.append(el2)
 
         
-def getParties(country):
-    print('TESTING...' + country)
-    prefix = country
-    # get the response in the form of html
-    if country == 'Congo (the Democratic Republic of the)':
-        prefix = 'the Democratic Republic of the Congo'
-    if country == 'Cabo Verde':
-        prefix ='Cape Verde'
-
-    if country == 'Congo':
-        prefix ='the Republic of the Congo'
+def getParties(countries):
     
-    wikiurl="https://en.wikipedia.org/wiki/List_of_political_parties_in_" + prefix.replace(' ', '_')
-    table_class="wikitable sortable jquery-tablesorter"
-    response=requests.get(wikiurl)
-    print(response.status_code)
-    if(response.status_code != 200):
-        print('Nothing found for country: ' + country)
-        return
-    
-    #with open("wiki.html") as fp:
-    #text = ''.join(letter for letter in response.text if letter.isalnum())
-    soup = BeautifulSoup(response.text, 'html.parser')
-    table = soup.find('table',{'class':"wikitable"})
-    if table:
-        df=pd.read_html(str(table))
-    else:
-        print('No table found for: ' + country)
-        return getData(soup, country)
+    for country in countries:
+        print('TESTING...' + country.name)
+        prefix = country.name
         
+        # get the response in the form of html
+        if country.name == 'Congo (the Democratic Republic of the)':
+            prefix = 'the Democratic Republic of the Congo'
+        if country.name == 'Cabo Verde':
+            prefix ='Cape Verde'
+
+        if country.name == 'Congo':
+            prefix ='the Republic of the Congo'
+        
+        wikiurl="https://en.wikipedia.org/wiki/List_of_political_parties_in_" + prefix.replace(' ', '_')
+        table_class="wikitable sortable jquery-tablesorter"
+        response=requests.get(wikiurl)
+        print(response.status_code)
+        if(response.status_code != 200):
+            print('Nothing found for country: ' + country.name)
+            return
         
 
-    df=pd.DataFrame(df[0])
-    df = df.dropna(axis=1, how='all')
-    print(df.head())
-    df.dropna(axis=1, how='all')
+        soup = BeautifulSoup(response.text, 'html.parser')
+        if country.name in ['Chad', 'Mali', 'Eswatini', 'Libya', 'Sudan']:
+            getData(soup, country)
+            continue
+        table = soup.find('table',{'class':"wikitable"})
+        if table:
+            df=pd.read_html(str(table))
+
+            df=pd.DataFrame(df[0])
+            df = df.dropna(axis=1, how='all')
+            print(df.head())
+            df.dropna(axis=1, how='all')
+            
+            df.rename(columns={ "Abbr.":"acronym", "acronym":"acronym", 'Ideologies': "ideology", 'Ideology': "ideology"})
+
+            if country.name == 'Angola':
+                df.rename(columns={ "Party.3":"name", "Party.2": "acronym"}, inplace=True) 
+            elif country.name == 'Nigeria':
+                df.rename(columns={ "Party.1":"name", "Party.2": "acronym", 'Chairperson':"leader"}, inplace=True)
+            elif country.name == 'Liberia' or country.name =='Rwanda':
+                df.rename(columns={ "Party.3":"name"}, inplace=True)
+            elif country.name == 'Ghana':
+                df.rename(columns={ "Name.2":"name"}, inplace=True)
+            elif country.name == 'Namibia':
+                df.rename(columns={ "Party[2].1":"name"}, inplace=True)
+            elif country.name == 'Djibouti':
+                df.rename(columns={ "Coalition.1":"name"}, inplace=True)
+            elif country.name == 'Congo (the Democratic Republic of the)':
+                df.rename(columns={ "Alliance.1":"name"}, inplace=True)
+            else :
+                df.rename(columns={ "Party.1":"name",
+                                "Party.2":"name",
+                                    "Abbr.":"acronym",
+                                    "Name.1": "name",
+                                    "Party/Group.1":"name",
+                                    "Party[1].1 ":"name",
+                                    "Party[1].1": "name",    
+                                    "Main ideology": "ideology",
+                                    "Main Ideology": "ideology",
+                                    "Ideology": "ideology",
+                                    "Leader":"leader",
+                                    "Chairperson":"leader", "President":"leader", "Party leader": "leader"}, inplace=True)
+            
+            if "acronym" not in df.columns:
+                df["acronym"] = df["name"].map(lambda x:  create_acronym(x))
+            if "ideology" not in df.columns:
+                df["ideology"] = df["name"].map(lambda x:    " No Data for " + x[0])
+            if "leader" not in df.columns:
+                df["leader"] = df["name"].map(lambda x:    " No Data for " + x[0])
+
+            df2 = df[["name", "acronym", "leader", "ideology"]]
+            print(df2.head())
+            dict_list = df2.to_dict("records")
+            for el in dict_list:
+                    
+                    data.append(build_fixture(el, country))
     
-    df.rename(columns={ "Abbr.":"Acronym"})
-    if country == 'Angola':
-        df.rename(columns={ "Party.3":"Name", "Party.2": 'Acronym'}, inplace=True) 
-    elif country == 'Nigeria':
-        df.rename(columns={ "Party.1":"Name", "Party.2": 'Acronym', 'Chairperson':'Leader'}, inplace=True)
-    elif country == 'Liberia' or country =='Rwanda':
-        df.rename(columns={ "Party.3":"Name"}, inplace=True)
-    elif country == 'Ghana':
-        df.rename(columns={ "Name.2":"Name"}, inplace=True)
-    elif country == 'Namibia':
-        df.rename(columns={ "Party[2].1":"Name"}, inplace=True)
-    elif country == 'Djibouti':
-        df.rename(columns={ "Coalition.1":'Name'}, inplace=True)
-    elif country == 'Congo (the Democratic Republic of the)':
-        df.rename(columns={ "Alliance.1":'Name'}, inplace=True)
-    else :
-        df.rename(columns={ "Party.1":"Name",
-                           "Party.2":"Name",
-                            "Name.1": "Name",
-                            'Party/Group.1':'Name',
-                            'Party[1].1 ':'Name',
-                            'Party[1].1': 'Name',
-                            'Ideologies': 'Ideology', 
-                            'Main ideology': 'Ideology',
-                            'Chairperson':'Leader', 'President':'Leader', 'Party leader': 'Leader'}, inplace=True)
-    #print(df.head())
-    if 'Acronym' not in df.columns:
-        df['Acronym'] = df['Name'].map(lambda x:  create_acronym(x))
-    if 'Ideology' not in df.columns:
-        df['Ideology'] = df['Acronym'].map(lambda x:  str(x) + "'s Ideology")
-    if 'Leader' not in df.columns:
-        df['Leader'] = df['Acronym'].map(lambda x:  str(x) + "'s Leader")
-    # if 'Ideology' not in df.columns:
-    #     df['Ideology'] = df['Name'].map(lambda x:  str(x) +'Not available')
+    print(data)
 
-    #check columns
-    cols =[]
-    indexes = ['Name', 'Acronym', 'Leader', 'Ideology']
-    for i in indexes:
-        if i in df.columns:
-            cols.append(i) 
-
-    print(cols)  
-
-    df2 = df[cols]
+    with open("country2.json", "w") as outfile:
+        json.dump(data, outfile, cls=DjangoJSONEncoder)
     
-    dict_list = df2.to_dict('records')
-    for el in dict_list:
-        el["Country"] = country
-        el["Name"] = ''.join(letter for letter in el['Name'] if letter.isalnum())
-        
-        return build_fixture(el)
-      
-    # print(data)
-    # return data  
-
-def build_fixture(el):
-    return {
+def build_fixture(el, country):
+        el2 ={
+                    "country":country.code,
+                    "name": el["name"],
+                    "acronym": el["acronym"],
+                    "leader": el["leader"],
+                    "ideology": el["ideology"],
+                }
+        return {
     "model": "parties.party",
     "pk": uuid.uuid4(),
-    "fields": el
+    "fields": el2
   }
