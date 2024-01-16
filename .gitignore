@@ -3,7 +3,6 @@ bucket-policy.txt
 vox/
 README.md
 requirements_.txt
-requirements.txt
 runtime.txt
 static/images
 staticfiles/images
