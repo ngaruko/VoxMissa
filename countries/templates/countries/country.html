@@ -14,7 +14,7 @@
           <div><a href="#" class="country_selector_dropbtn" style="text-align: right;"><span class="flag-icon flag-icon-un"></span> 
             Switch country</a>
             <div class="country_selector_dropdown-content">
-            {% for country in countries %}
+            {% for country in africa %}
             
             <a href="{% url 'country' country.code %}" data-country-code="{{ country.code}}">
             <span class="flag-icon flag-icon-{{ country.code | lower }}"> </span> {{ country.name }}</a>
