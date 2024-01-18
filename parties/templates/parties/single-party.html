@@ -6,10 +6,11 @@
 <main class="singleParty my-md">
     <div class="container">
         <div class="layout">
+            <h4 style="width: 10%;"><a href="#"><i class="mg map-{{ party.country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ party.country.code |lower }} circle"></span>{{ party.country.name }}</a></h4>
+
             <div class="column column--1of3">
-                <h3>COUNTRY >> {{ party.country.name }}</h3>
+
                 <div class="singleParty__toolStack">
-                    {{ party.ideology }}
                     {% for tag in party.tags.all %}
                     <span class="tag tag--pill tag--sub tag--lg">
                         <small>{{tag}}</small>

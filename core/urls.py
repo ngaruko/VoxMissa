@@ -13,6 +13,7 @@ urlpatterns = [
     path('parties/', include('parties.urls')),
     path('candidates/', include('forum.urls')),
     path('forum/', include('forum.urls')),
+    path('events/', include('events.urls')),
     path('', include('countries.urls')),
     path('users/', include('users.urls')),
     path('api/', include('api.urls')),
