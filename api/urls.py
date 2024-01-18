@@ -20,5 +20,10 @@ urlpatterns = [
     path('policies/<str:pk>/', views.getPolicy),
     # path('policies/<str:pk>/vote/', views.policyVote),
 
+    #parties
+    path('parties/', views.getParties),
+    path('parties/<str:pk>/', views.getParty),
+    # path('parties/<str:pk>/vote/', views.partyVote),
+
     path('remove-tag/', views.removeTag)
 ]

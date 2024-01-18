@@ -1,7 +1,9 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
-from .serializers import ProjectSerializer
+
+from parties.models import Party
+from .serializers import PolicySerializer, ProjectSerializer, PartySerializer
 from projects.models import Project, Review, Tag
 from policies.models import Policy
 
@@ -25,6 +27,8 @@ def getRoutes(request):
 @api_view(['GET'])
 def getProjects(request):
     projects = Project.objects.all()
+    for project in projects:
+        print(project)
     serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data)
 
@@ -71,11 +75,24 @@ def removeTag(request):
 @api_view(['GET'])
 def getPolicies(request):
     policies = Policy.objects.all()
-    serializer = ProjectSerializer(policies, many=True)
+    serializer = PolicySerializer(policies, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def getPolicy(request, pk):
     policy = Policy.objects.get(id=pk)
-    serializer = ProjectSerializer(policy, many=False)
+    serializer = PolicySerializer(policy, many=False)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getParties(request):
+    country = request.GET.get("country")
+    parties = Party.objects.filter(country=country) if country else Party.objects.all()
+    serializer = PartySerializer(parties, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getParty(request, pk):
+    party = Party.objects.get(id=pk)
+    serializer = PartySerializer(party, many=False)
     return Response(serializer.data)

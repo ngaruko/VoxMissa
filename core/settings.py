@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'forum.apps.ForumConfig',
     'countries.apps.CountriesConfig',
     'parties.apps.PartiesConfig',
+    'supporters.apps.SupportersConfig',
+    'events.apps.EventsConfig',
 
     'rest_framework',
     'corsheaders',

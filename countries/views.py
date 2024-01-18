@@ -72,8 +72,8 @@ def countries(request):
 
 
 
-def country(request, code):
-    countryObj = [country for country in  Countries() if country.code ==code][0] 
+def country(request, pk):
+    countryObj = [country for country in  Countries() if country.code ==pk][0] 
     print('Page: ' + countryObj.name)   
     candidates = Profile.objects.all()
     programs = Project.objects.filter(country__name=countryObj.name)

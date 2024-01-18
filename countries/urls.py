@@ -5,13 +5,13 @@ from django.urls import path, include
 urlpatterns = [
 
     path('', views.countries, name="countries"),
-    path('<str:code>/', views.country, name="country"),
+    path('<str:pk>/', views.country, name="country"),
 
-    path('<str:code>/parties/', include('parties.urls')),
+    # path('<str:pk>/parties/', include('parties.urls')),
 
-    path('<str:code>/projects/', include('projects.urls')),
-    path('<str:code>/policies/', include('policies.urls')),
-    path('<str:code>/candidates/', include('forum.urls')),
-    path('<str:code>/forum/', include('forum.urls')),
+    # path('<str:pk>/projects/', include('projects.urls')),
+    # path('<str:pk>/policies/', include('policies.urls')),
+    # path('<str:pk>/candidates/', include('forum.urls')),
+    # path('<str:pk>/forum/', include('forum.urls')),
    
 ]
