@@ -86,8 +86,8 @@ def getPolicy(request, pk):
 
 @api_view(['GET'])
 def getParties(request):
-    country = request.GET.get("country")
-    parties = Party.objects.filter(country=country) if country else Party.objects.all()
+    country_query = request.GET.get("country")
+    parties = Party.objects.filter(country=country_query) if country_query else Party.objects.all()
     serializer = PartySerializer(parties, many=True)
     return Response(serializer.data)
 
