@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'parties.apps.PartiesConfig',
     'supporters.apps.SupportersConfig',
     'events.apps.EventsConfig',
+    'eventcalendar.apps.EventcalendarConfig',
 
     'rest_framework',
     'corsheaders',

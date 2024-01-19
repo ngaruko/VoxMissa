@@ -1,5 +1,10 @@
 {% extends 'main.html' %}
-
+{% load static %}
+ 
+ {% block extracss %}
+ <!-- Forum UI -->
+ <link rel="stylesheet" href="{% static 'styles/forum.css' %}" />
+  {% endblock extracss %}
 {% block content %}
 
 <main class="layout layout--3">
@@ -59,4 +64,4 @@
   </div>
 </main>
 
-{% endblock %}
+{% endblock content %}

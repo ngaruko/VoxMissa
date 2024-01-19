@@ -4,9 +4,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from django.contrib.auth import views as auth_views
+from . import views
+from countries.views import countries
+from eventcalendar.views import DashboardView
 
 
 urlpatterns = [
+    path('home', views.home, name="home"),
+    path("dashboard", DashboardView.as_view(), name="dashboard"),
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls')),
     path('policies/', include('policies.urls')),
@@ -14,9 +19,12 @@ urlpatterns = [
     path('candidates/', include('forum.urls')),
     path('forum/', include('forum.urls')),
     path('events/', include('events.urls')),
-    path('', include('countries.urls')),
     path('users/', include('users.urls')),
+    path('calendar/', include('eventcalendar.urls')),
     path('api/', include('api.urls')),
+
+    #this has to be last. Poor design I know, but I am working on it
+    path('', include('countries.urls')),
 
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="reset_password.html"),
          name="reset_password"),

@@ -28,7 +28,7 @@ class Event(models.Model):
     type = models.CharField(max_length=50, choices=TYPES, default='poll')
     preview = models.TextField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
-    participants = models.ManyToManyField(Profile, blank=True, related_name='events')
+    participants = models.ManyToManyField(Profile, blank=True, related_name='eventus')
     start_date = models.DateTimeField(null=True)
     end_date = models.DateTimeField(null=True)
     registration_deadline = models.DateTimeField(null=True)

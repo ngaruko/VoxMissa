@@ -38,15 +38,10 @@ europe = [country for country in Countries() if country.code in ['AL', 'AD', 'AM
 
 oceania = [country for country in Countries() if country.code in ['AS', 'AU', 'FJ', 'FM', 'KI', 'MH', 'NR', 'NZ', 'PW', 'PG', 'SB', 'TO', 'TV', 'VU', 'WS'
             ]] 
-def countries(request):
+
+def home(request):
     results, search_query = searchCountries(request)
     countries = [country for country in Countries()]
-    # for country in countries:
-    #         country['slug'] = slugify(country['name'])
-
-
-    #africa minus uniparty countries: CM for Cameroon
-       
       
     context ={ 
         
@@ -60,18 +55,12 @@ def countries(request):
             'search_query':search_query
     }
 
-    #Test data scrapped from wikipedia > political parties
-    #getParties(africa)
-    #Party.objects.all().delete()
-    
-#     with open("fixtures/country.json", "w") as outfile:
-#         json.dump(data, outfile, cls=DjangoJSONEncoder)
 
-    return render(request, 'countries/countries.html', context)
+    return render(request, 'home.html', context)
 
 
 
-def country(request, pk):
+def countryView(request, pk):
     countryObj = [country for country in  Countries() if country.code ==pk][0] 
     print('Page: ' + countryObj.name)   
     candidates = Profile.objects.all()
