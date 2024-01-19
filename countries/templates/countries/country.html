@@ -1,4 +1,19 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block extracss %}
+    <!-- Country css -->
+
+<link rel="stylesheet" href="{% static 'styles/country.css' %}" />
+     
+<!-- Country Selector -->
+
+<link rel="stylesheet" href="{% static 'styles/country-selector.css' %}" />
+<!-- Flags -->
+<link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css />
+<!-- country selector UI -->
+<link rel="stylesheet" href="{% static 'mapglyphs/2.0/mapglyphs.css' %}" />    
+{% endblock extracss %}
+
 
 {% block content %}
 <title> {{ country.name }} </title>

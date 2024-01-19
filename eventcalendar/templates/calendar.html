@@ -22,9 +22,18 @@
 {% endblock breadcrumb %} -->
 
 {% block content %}
+
+  
 <div class="main">
+    <div id='top'>
+
+        Locales:
+        <select id='locale-selector'></select>
+      </div>
     <div class="col-md-12">
+        
         <div class="tile row">
+            
             <div class="col-md-3">
                 <div id="external-events">
                     <h4 class="mb-4">Running Events</h4>
@@ -127,21 +136,24 @@
 
 
 {% block extrascripts %}
-<script src="{% static 'calender/main.js' %}"></script>
+<script src="{% static 'calendar/main.js' %}"></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js'></script>
 <script>
     
   function converterDataParaDjangoFormat(data) {
       const dataJS = new Date(data);
-      const ano = dataJS.getFullYear();
-      const mes = (dataJS.getMonth() + 1).toString().padStart(2, '0');
-      const dia = dataJS.getDate().toString().padStart(2, '0');
-      const hora = dataJS.getHours().toString().padStart(2, '0');
-      const minuto = dataJS.getMinutes().toString().padStart(2, '0');
-      const segundo = dataJS.getSeconds().toString().padStart(2, '0');
-      const formatoDjango = `${ano}-${mes}-${dia} ${hora}:${minuto}:${segundo}`;
+      const year = dataJS.getFullYear();
+      const month = (dataJS.getMonth() + 1).toString().padStart(2, '0');
+      const day = dataJS.getDate().toString().padStart(2, '0');
+      const hour = dataJS.getHours().toString().padStart(2, '0');
+      const minute = dataJS.getMinutes().toString().padStart(2, '0');
+      const second = dataJS.getSeconds().toString().padStart(2, '0');
+      const formatoDjango = `${year}-${month}-${day} ${hour}:${minute}:${second}`;
       return formatoDjango;
   }
     document.addEventListener('DOMContentLoaded', function() {
+      //var initialLocaleCode = 'en';
+      var localeSelectorEl = document.getElementById('locale-selector');
       var calendarEl = document.getElementById('calendar');
       var today = new Date();
 
@@ -149,8 +161,10 @@
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay,list'
+          right: 'multiMonthYear, dayGridMonth,timeGridWeek,timeGridDay,list'
+
         },
+        //locale: initialLocaleCode,
         initialDate: today,
         navLinks: true, // can click day/week names to navigate views
         selectable: true,
@@ -169,7 +183,7 @@
         // THIS KEY WON'T WORK IN PRODUCTION!!!
         // To make your own Google API key, follow the directions here:
         // http://fullcalendar.io/docs/google_calendar/
-        googleCalendarApiKey: 'AIzaSyCqCxjjLtjbtkX37aOtWB8OfwBLy_6QuYk',
+        //googleCalendarApiKey: '',
 
         // bangladesh Holidays
         // events: 'bn.bd#holiday@group.v.calendar.google.com',
@@ -208,32 +222,51 @@
         },
         editable: true,
         dayMaxEvents: true, // allow "more" link when too many events
-       events: {{ events|safe }}
-        // 'en.new_zealand#holiday@group.v.calendar.google.com' // {{ events|safe}} 
-        // events: [
-        //   {
-        //     title: 'All Day Event',
-        //     start: '2024-01-26'
-        //   },
-        //   {
-        //     groupId: 999,
-        //     title: 'Repeating Event',
-        //     start: '2024-01-16T16:00:00'
-        //   },
-        //   {
-        //     title: 'Conference',
-        //     start: '2024-01-11',
-        //     end: '2024-01-13'
-        //   },
-        //   {
-        //     title: 'Click for Google',
-        //     url: 'http://google.com/',
-        //     start: '2024-01-28'
-        //   }
-        // ]
+       //events: {{ events|safe }}
+        //events: 'en.new_zealand#holiday@group.v.calendar.google.com' // {{ events|safe}} 
+        events: [
+          {
+            title: 'All Day Event',
+            start: '2024-01-26'
+          },
+          {
+            groupId: 999,
+            title: 'Repeating Event',
+            start: '2024-01-16T16:00:00'
+          },
+          {
+            title: 'Conference',
+            start: '2024-01-11',
+            end: '2024-01-13'
+          },
+          {
+            title: 'Click for Google',
+            url: 'http://google.com/',
+            start: '2024-01-28'
+          }
+        ]
       });
-
       calendar.render();
+
+      console.log('code...', calendar.getAvailableLocaleCodes());
+      
+      // build the locale selector's options
+
+  calendar.getAvailableLocaleCodes().forEach(function(localeCode) {
+    console.log('some locale ' + localeCode)
+    var optionEl = document.createElement('option');
+    optionEl.value = localeCode;
+    //optionEl.selected = localeCode == initialLocaleCode;
+    optionEl.innerText = localeCode;
+    localeSelectorEl.appendChild(optionEl);
+  });
+
+  // when the selected option changes, dynamically change the calendar option
+  localeSelectorEl.addEventListener('change', function() {
+    if (this.value) {
+      calendar.setOption('locale', this.value);
+    }
+  });
     });
 
     const closeBtn1 = document.getElementById('modalClose1');

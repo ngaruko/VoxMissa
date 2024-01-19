@@ -22,7 +22,7 @@ from .models import Event
 
 # Create your views here.
 class DashboardView(LoginRequiredMixin, View):
-    login_url = "accounts:signin"
+    login_url = "login"
     template_name = "dashboard.html"
 
     def get(self, request, *args, **kwargs):
@@ -83,7 +83,7 @@ def next_month(d):
 
 
 class CalendarView(LoginRequiredMixin, generic.ListView):
-    login_url = "accounts:signin"
+    login_url = "login"
     model = Event
     template_name = "calendar.html"
 
@@ -154,7 +154,7 @@ class EventMemberDeleteView(generic.DeleteView):
     success_url = reverse_lazy("calendar")
 
 class CalendarViewNew(LoginRequiredMixin, generic.View):
-    login_url = "accounts:signin"
+    login_url = "login"
     template_name = "calendar.html"
     form_class = EventForm
 
