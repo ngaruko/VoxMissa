@@ -10,7 +10,6 @@ from eventcalendar.views import DashboardView
 
 
 urlpatterns = [
-    path('home', views.home, name="home"),
     path("dashboard", DashboardView.as_view(), name="dashboard"),
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls')),
@@ -24,7 +23,9 @@ urlpatterns = [
     path('api/', include('api.urls')),
 
     #this has to be last. Poor design I know, but I am working on it
-    path('', include('countries.urls')),
+    path('countries', include('countries.urls')),
+    path('', views.home, name="home"),
+    path('<str:pk>/', views.country, name="country"),
 
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="reset_password.html"),
          name="reset_password"),

@@ -60,7 +60,7 @@ def home(request):
 
 
 
-def countryView(request, pk):
+def country(request, pk):
     countryObj = [country for country in  Countries() if country.code ==pk][0] 
     print('Page: ' + countryObj.name)   
     candidates = Profile.objects.all()
