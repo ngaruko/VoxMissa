@@ -4,6 +4,8 @@ from django.test import TestCase
 from datetime import datetime
 from django.db import models
 from django.urls import reverse
+from django_countries import countries, Countries
+from core.utils import Africa
 
 from users.models import Profile
 
@@ -35,11 +37,25 @@ class EventManager(models.Manager):
         ).order_by("start_time")
         return running_events
 
-
+class G8Countries(Countries):
+    only = [
+        "CA", "FR", "DE", "IT", "JP", "RU", "GB"
+    ]
 class Event(EventAbstract):
+    TYPES = (
+       ('poll', 'poll'),
+       ('meeting', 'meeting'),
+       ('rally', 'rally'),
+       ('election', 'election'),
+       ('campaign', 'campaign'),
+       ('other', 'other')
+       
+   )
     """ Event model """
 
     user = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="events")
+    country = models.CharField(max_length=200, blank=True, null=True, choices=Africa)
+    type = models.CharField(max_length=50, choices=TYPES, default='election')
     title = models.CharField(max_length=200)
     description = models.TextField()
     start_time = models.DateTimeField()

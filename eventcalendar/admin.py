@@ -13,6 +13,7 @@ class EventAdmin(admin.ModelAdmin):
     list_display = [
         "id",
         "title",
+        "country",
         "user",
         "is_active",
         "is_deleted",
@@ -20,7 +21,7 @@ class EventAdmin(admin.ModelAdmin):
         "updated_at",
     ]
     list_filter = ["is_active", "is_deleted"]
-    search_fields = ["title"]
+    search_fields = ["title", "country"]
 
 
 @admin.register(models.EventMember)

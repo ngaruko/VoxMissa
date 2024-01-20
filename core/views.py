@@ -72,3 +72,8 @@ def country(request, pk):
     context = {'countries': Countries(),  'africa' :africa, 'country': countryObj, 'policies': policies, 'projects': programs, 
                'profiles':candidates, 'parties': parties}
     return render(request, 'countries/country.html', context)
+
+def seed(request):
+    #Test data scrapped from wikipedia > political parties
+    getParties(africa)
+    #Party.objects.all().delete()

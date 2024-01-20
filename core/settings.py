@@ -42,10 +42,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'policies.apps.PoliciesConfig',
     'forum.apps.ForumConfig',
-    'countries.apps.CountriesConfig',
     'parties.apps.PartiesConfig',
-    'supporters.apps.SupportersConfig',
-    'events.apps.EventsConfig',
     'eventcalendar.apps.EventcalendarConfig',
 
     'rest_framework',
@@ -223,6 +220,9 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # AWS_STORAGE_BUCKET_NAME = 'politics-bucket'
 
 #countries per continents:
+COUNTRY_ONLY =['AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CF', 'CG', 'CI', 'CM', 'CV', 'DJ', 'DZ', 'EG', 'ER', 'ET', 'GA', 'GH',
+        'GM', 'GN', 'GQ', 'GW', 'KE', 'KM', 'LS', 'LR', 'LY', 'MA', 'MG', 'ML', 'MR', 'MU', 'MW', 'MZ', 'NA', 'NE', 'NG', 'RW',
+        'SC', 'SD', 'SL', 'SN', 'SO', 'SS', 'ST', 'SZ', 'TD', 'TG', 'TN', 'TZ', 'UG', 'ZA', 'ZM', 'ZW' ]
 COUNTRIES_AFRICA = ['AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CF', 'CG', 'CI', 'CM', 'CV', 'DJ', 'DZ', 'EG', 'ER', 'ES', 'ET', 'GA', 'GH',
         'GM', 'GN', 'GQ', 'GW', 'KE', 'KM', 'LS', 'LR', 'LY', 'MA', 'MG', 'ML', 'MR', 'MU', 'MW', 'MZ', 'NA', 'NE', 'NG', 'RW',
         'SC', 'SD', 'SH', 'SL', 'SN', 'SO', 'SS', 'ST', 'SZ', 'TD', 'TG', 'TN', 'TZ', 'UG', 'ZA', 'ZM', 'ZW' ]

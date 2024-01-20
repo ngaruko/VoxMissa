@@ -5,7 +5,6 @@ from django.conf.urls.static import static
 
 from django.contrib.auth import views as auth_views
 from . import views
-from countries.views import countries
 from eventcalendar.views import DashboardView
 
 
@@ -17,13 +16,11 @@ urlpatterns = [
     path('parties/', include('parties.urls')),
     path('candidates/', include('forum.urls')),
     path('forum/', include('forum.urls')),
-    path('events/', include('events.urls')),
     path('users/', include('users.urls')),
     path('calendar/', include('eventcalendar.urls')),
     path('api/', include('api.urls')),
 
     #this has to be last. Poor design I know, but I am working on it
-    path('countries', include('countries.urls')),
     path('', views.home, name="home"),
     path('<str:pk>/', views.country, name="country"),
 

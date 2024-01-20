@@ -4,18 +4,15 @@ from django.db import models
 from django.db import models
 import uuid
 from django_countries.fields import CountryField
-from django_countries import Countries, countries
 from django.db.models.deletion import CASCADE
+from core.utils import Africa
 from users.models import Profile
 from policies.models import Policy
 # Create your models here.
 
 
 class Party(models.Model):
-    # country = models.CharField(max_length=200,  null=True, choices=CountryField().choices + [('', 'Select Country')])
-    country = CountryField(blank_label="(select country)", null=True)
-    #ßcountry = models.CharField(max_length=200,  null=True, choices=CountryField().choices + [('', 'Select Country')])
-
+    country = models.CharField(max_length=200,  null=True, choices=Africa)
     owner = models.ForeignKey(
         Profile, null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=200)

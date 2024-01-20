@@ -5,15 +5,15 @@ from django.db import models
 import uuid
 
 from django.db.models.deletion import CASCADE
+from core.utils import Africa
 from users.models import Profile
 # Create your models here.
 from django_countries.fields import CountryField
-from django_countries import Countries, countries
 from django.utils.text import slugify
 from django.conf import settings
 
 class Policy(models.Model):
-    country = models.CharField(max_length=200, blank=True, null=True, choices=countries)
+    country = models.CharField(max_length=200, blank=True, null=True, choices=Africa)
     owner = models.ForeignKey(
         Profile, null=True, blank=True, on_delete=models.CASCADE)
     name = models.CharField(max_length=200)

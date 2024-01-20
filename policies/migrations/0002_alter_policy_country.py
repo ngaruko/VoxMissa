@@ -7,13 +7,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('parties', '0001_initial'),
+        ('policies', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='party',
+            model_name='policy',
             name='country',
-            field=models.CharField(choices=core.utils.Africa, max_length=200, null=True),
+            field=models.CharField(blank=True, choices=core.utils.Africa, max_length=200, null=True),
         ),
     ]

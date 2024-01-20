@@ -2,7 +2,6 @@ from django.db import models
 import uuid
 
 from django.db.models.deletion import CASCADE
-from countries.models import G8Countries
 from users.models import Profile
 # Create your models here.
 from django_countries.fields import CountryField

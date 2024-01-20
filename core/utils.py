@@ -14,6 +14,9 @@ import requests # library to handle requests
 from bs4 import BeautifulSoup # library to parse HTML documents
 
 
+class Africa(Countries):
+    only = settings.COUNTRIES_AFRICA
+
 def searchCountries(request):
 
     search_query = ""
@@ -225,7 +228,7 @@ def getParties(countries):
     
     print(data)
 
-    with open("country2.json", "w") as outfile:
+    with open("country.json", "w") as outfile:
         json.dump(data, outfile, cls=DjangoJSONEncoder)
     
 def build_fixture(el, country):
