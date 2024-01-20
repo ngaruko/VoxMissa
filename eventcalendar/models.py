@@ -37,10 +37,6 @@ class EventManager(models.Manager):
         ).order_by("start_time")
         return running_events
 
-class G8Countries(Countries):
-    only = [
-        "CA", "FR", "DE", "IT", "JP", "RU", "GB"
-    ]
 class Event(EventAbstract):
     TYPES = (
        ('poll', 'poll'),

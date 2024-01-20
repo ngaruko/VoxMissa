@@ -8,7 +8,7 @@ static/images
 staticfiles/images
 resources/
 frontend/
-/templates/
+
 # Django #
 *.log
 *.pot

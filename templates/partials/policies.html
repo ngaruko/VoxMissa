@@ -1,0 +1,58 @@
+<!-- Main Section -->
+
+    <section class="hero-section text-center">
+        <div class="container container--narrow">
+            <div class="hero-section__box">
+                <h2>Search for <span>Policies</span></h2>
+            </div>
+
+            <div class="hero-section__search">
+                <form id='searchForm' class="form" action="{% url 'policies' %}" method="get">
+                    <div class="form__field">
+                        <label for="formInput#search">Search By Policies </label>
+                        <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                            placeholder="Search by Policy Name" value="{{search_query}}" />
+                    </div>
+
+                    <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="policiesList">
+        <div class="container">
+            <div class="grid grid--three">
+
+                {% for policy in policies %}
+                <div class="column">
+                    <div class="card policy">
+                        <a href="{% url 'policy' policy.id %}" class="policy">
+                            <img class="policy__thumbnail" src="{{policy.imageURL}}" alt="policy thumbnail" />
+                            <div class="card__body">
+                                <h3 class="policy__title">{{policy.name}}</h3>
+                                <p class="policy--rating">
+                                    <span style="font-weight: bold;">{{policy.vote_ratio}}%</span> Positive
+                                    Feedback ({{policy.vote_total}}) Vote{{policy.vote_total|pluralize:"s"}}
+                                </p>
+                                <div class="policy__tags">
+                                    {% for tag in policy.tags.all %}
+                                    <span class="tag tag--pill tag--main">
+                                        <small>{{tag}}</small>
+                                    </span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    {% include 'pagination.html' with queryset=policies custom_range=custom_range %}
+
+

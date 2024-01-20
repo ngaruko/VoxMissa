@@ -12,7 +12,8 @@ from policies.models import Policy
 
 
 class Party(models.Model):
-    country = models.CharField(max_length=200,  null=True, choices=Africa)
+    country = CountryField(null=True, choices=Africa)
+    #country = models.CharField(max_length=200, choices=Africa)
     owner = models.ForeignKey(
         Profile, null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=200)

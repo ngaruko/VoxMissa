@@ -1,8 +1,11 @@
+from datetime import datetime
+import random
 from django_countries import Countries
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.utils.text import slugify
 from django.conf import settings
+import pycountry
 import wikipediaapi
 import uuid
 import json
@@ -231,6 +234,81 @@ def getParties(countries):
     with open("country.json", "w") as outfile:
         json.dump(data, outfile, cls=DjangoJSONEncoder)
     
+
+def getElections(): 
+    elections =[] 
+    table = BeautifulSoup(open('elections.html','r').read()).find('table')
+    df = pd.read_html(str(table)) 
+    
+    #df.rename(columns={ "Abbr.":"acronym", "acronym":"acronym", 'Ideologies': "ideology", 'Ideology': "ideology"})
+
+     
+    # soup = BeautifulSoup(response.text, 'html.parser')
+    # table = soup.find('table',{'class':"wikitable"})
+    # df=pd.read_html(str(table))
+    df0=pd.DataFrame(df[0])  
+    #df.drop(columns=df.columns[-1],  axis=1,  inplace=True)
+    df = df0.dropna()
+    print(df.head(50))
+    def getCode(country):
+        print('Code for : ' + country)
+        if country=='Cape Verde':
+            return pycountry.countries.get(name='Cabo Verde').alpha_2
+        if country=='Guinea Bissau':
+            return pycountry.countries.get(name='Guinea-Bissau').alpha_2
+        if 'Somaliland' in country:
+            return pycountry.countries.get(name='Somalia').alpha_2
+        return pycountry.countries.get(name=country).alpha_2
+       
+
+    df["Country"] = df["Country"].map(lambda x:  getCode(x))
+    dict_list = df.to_dict("records")
+    #print(dict_list)
+    for el in dict_list:                    
+            elections.append(build_fixture_election(el))
+    
+    
+    print(elections)
+   
+
+    with open("elections.json", "w") as outfile:
+        json.dump(elections, outfile, cls=DjangoJSONEncoder)
+
+
+def build_fixture_election(el):
+      
+        return {
+    "model": "eventcalendar.event", 
+    "pk": random.randint(1, 100), 
+    "fields": 
+        {
+            "country": el["Country"], # pycountry.countries.get(name=(el["Country"])),
+        "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+        "is_active": True,
+        "is_deleted": False,
+        "created_at": "2024-01-20T01:13:42.616819Z",
+        "updated_at": "2024-01-20T01:13:42.616846Z",
+        "type": "election",
+        "title":el["Election"] ,
+        "description": el["Structure of Parliament"],
+        "start_time": datify(el['Date'])[0], #'2024-12-01T00:00:00Z ' + el["Date"],
+        "end_time": datify(el['Date'])[1]#'2024-12-028T00:00:00Z '  + el["Date"]
+    }
+        }
+  
+
+def datify(date):
+    months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+    for month in months:
+        if month in date:
+            start_date = datetime.strptime(month + ' 01 2024  01:00AM', '%b %d %Y %I:%M%p').strftime('%Y-%m-%dT00:00:00.000Z')
+            end_date = datetime.strptime(month + ' 28 2024  01:00AM', '%b %d %Y %I:%M%p').strftime('%Y-%m-%dT00:00:00.000Z')
+            print(start_date)
+
+            return start_date, end_date
+        else:
+            return '2024-12-01T00:00:00Z', '2024-12-28T00:00:00Z' 
+
 def build_fixture(el, country):
         el2 ={
                     "country":country.code,

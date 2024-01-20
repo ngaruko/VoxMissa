@@ -15,7 +15,7 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.core import paginator
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .utils import getElections, searchCountries, getParties              
+from .utils import searchCountries, getParties              
 
 
 africa  = [country for country in Countries() if country.code in ['AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CF', 'CG', 'CI', 'CM', 'CV', 'DJ', 'DZ', 'EG', 'ER', 'ET', 'GA', 'GH',
@@ -38,10 +38,15 @@ europe = [country for country in Countries() if country.code in ['AL', 'AD', 'AM
 
 oceania = [country for country in Countries() if country.code in ['AS', 'AU', 'FJ', 'FM', 'KI', 'MH', 'NR', 'NZ', 'PW', 'PG', 'SB', 'TO', 'TV', 'VU', 'WS'
             ]] 
-
-def home(request):
+def countries(request):
     results, search_query = searchCountries(request)
     countries = [country for country in Countries()]
+    # for country in countries:
+    #         country['slug'] = slugify(country['name'])
+
+
+    #africa minus uniparty countries: CM for Cameroon
+       
       
     context ={ 
         
@@ -55,9 +60,14 @@ def home(request):
             'search_query':search_query
     }
 
+    #Test data scrapped from wikipedia > political parties
     #getParties(africa)
-    #getElections()
-    return render(request, 'home.html', context)
+    #Party.objects.all().delete()
+    
+#     with open("fixtures/country.json", "w") as outfile:
+#         json.dump(data, outfile, cls=DjangoJSONEncoder)
+
+    return render(request, 'countries/countries.html', context)
 
 
 
@@ -73,9 +83,3 @@ def country(request, pk):
     context = {'countries': Countries(),  'africa' :africa, 'country': countryObj, 'policies': policies, 'projects': programs, 
                'profiles':candidates, 'parties': parties}
     return render(request, 'country.html', context)
-
-def seed(request):
-    #Test data scrapped from wikipedia > political parties
-    getParties(africa)
-    #Party.objects.all().delete()
-    return render(request, 'Parties seeded !', { })

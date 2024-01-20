@@ -1,4 +1,5 @@
 from rest_framework import serializers
+from eventcalendar.models import Event
 from policies.models import Policy
 from projects.models import Project, Tag, Review
 from users.models import Profile
@@ -63,3 +64,10 @@ class PartySerializer(serializers.ModelSerializer):
     #     reviews = obj.review_set.all()
     #     serializer = ReviewSerializer(reviews, many=True)
     #     return serializer.data
+
+class EventSerializer(serializers.ModelSerializer):
+    user = ProfileSerializer(many=False)
+
+    class Meta:
+        model = Event
+        fields = '__all__'

@@ -1,9 +1,10 @@
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from rest_framework.response import Response
+from eventcalendar.models import Event
 
 from parties.models import Party
-from .serializers import PolicySerializer, ProjectSerializer, PartySerializer
+from .serializers import PolicySerializer, ProjectSerializer, PartySerializer, EventSerializer
 from projects.models import Project, Review, Tag
 from policies.models import Policy
 
@@ -27,8 +28,6 @@ def getRoutes(request):
 @api_view(['GET'])
 def getProjects(request):
     projects = Project.objects.all()
-    for project in projects:
-        print(project)
     serializer = ProjectSerializer(projects, many=True)
     return Response(serializer.data)
 
@@ -95,4 +94,17 @@ def getParties(request):
 def getParty(request, pk):
     party = Party.objects.get(id=pk)
     serializer = PartySerializer(party, many=False)
+    return Response(serializer.data)
+
+#events
+@api_view(['GET'])
+def getEvents(request):
+    events = Event.objects.all()
+    serializer = EventSerializer(events, many=True)
+    return Response(serializer.data)
+
+@api_view(['GET'])
+def getEvent(request, pk):
+    event = Event.objects.get(id=pk)
+    serializer = EventSerializer(event, many=False)
     return Response(serializer.data)

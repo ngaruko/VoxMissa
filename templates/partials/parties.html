@@ -1,0 +1,62 @@
+
+    <section class="hero-section text-center">
+        <div class="container container--narrow">
+            <div class="hero-section__box">
+                <h2>Search for <span>Parties</span></h2>
+            </div>
+
+            <div class="hero-section__search">
+                <form id='searchForm' class="form" action="{% url 'parties' %}" method="get">
+                    <div class="form__field">
+                        <label for="formInput#search">Search By Parties </label>
+                        <input class="input input--text" id="formInput#search" type="text" name="search_query"
+                            placeholder="Search by Party Name" value="{{search_query}}" />
+                    </div>
+
+                    <input class="btn btn--sub btn--lg" type="submit" value="Search" />
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- Search Result: DevList -->
+    <section class="partiesList">
+        <div class="container-parties">
+            <div class="grid grid--three">
+
+                {% for party in parties %}
+                <div class="column">
+                    <div class="card party">
+                        <a href="{% url 'party' party.id %}" class="party">
+                            <img class="party__thumbnail" src="{{party.official_logo}}" alt="party thumbnail" />
+                            <div class="card__body">
+                                <h4 class="party__title">{{party.name}} ({{ party.acronym }})</h4>
+                                <p class="party__author"> Leader: {{party.leader }}</p>
+
+                                <p><a class="party__author" href="#">Leader: 
+                                        {{party.leader}}
+                                </p>
+                                <p class="party--rating">
+                                    <span>{{party.vote_ratio}}%</span> Positive
+                                    Feedback ({{party.vote_total}}) Vote{{party.vote_total|pluralize:"s"}}
+                                </p>
+                                <div class="party__tags">
+                                    {{ party.ideology }}
+                                    {% for tag in party.tags.all %}
+                                    <span class="tag tag--pill tag--main">
+                                        <small>{{tag}}</small>
+                                    </span>
+                                    {% endfor %}
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </section>
+
+    {% include 'pagination.html' with queryset=parties custom_range=custom_range %}
+
