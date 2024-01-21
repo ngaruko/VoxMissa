@@ -11,6 +11,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy, reverse
 from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
+import pycountry
 
 from users.models import Profile
 
@@ -161,13 +162,21 @@ class CalendarViewNew(LoginRequiredMixin, generic.View):
     def get(self, request, *args, **kwargs):
         forms = self.form_class()
         events = Event.objects.all()
+        for event in events:
+            code = event.country
+            event.country = pycountry.countries.get(alpha_2=code)
         #get_all_events(user=Profile.objects.get(user=request.user))
         events_month = Event.objects.all() #get_running_events(user=Profile.objects.get(user=request.user))
+        for event in events_month:
+            code = event.country
+            event.country = pycountry.countries.get(alpha_2=code)
         event_list = []
         # start: '2020-09-16T16:00:00'
         for event in events:
             event_list.append(
                 {   "id": event.id,
+                    "country": event.country.name,
+                    "flag": event.country.flag,
                     "title": event.title,
                     "start": event.start_time.strftime("%Y-%m-%dT%H:%M:%S"),
                     "end": event.end_time.strftime("%Y-%m-%dT%H:%M:%S"),

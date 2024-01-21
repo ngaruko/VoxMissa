@@ -1,1 +1,410 @@
-[{"model": "events.event", "pk": 76, "fields": {"country": "DZ", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President & Council of the Union", "description": "Bicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 29, "fields": {"country": "BW", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "National Assembly", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 3, "fields": {"country": "BF", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "Presidential", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 37, "fields": {"country": "CV", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "Local", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 11, "fields": {"country": "TD", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President, National Assembly & Municipal Councils", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 8, "fields": {"country": "KM", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President & Governors (first round)", "description": "Unicameral", "start_time": "2024-01-01T00:00:00.000Z", "end_time": "2024-01-28T00:00:00.000Z"}}, {"model": "events.event", "pk": 36, "fields": {"country": "ET", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President", "description": "Bicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 39, "fields": {"country": "GH", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President & National Assembly", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 79, "fields": {"country": "GW", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 6, "fields": {"country": "LY", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "Local, Parliamentary & Presidential", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 39, "fields": {"country": "MG", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "National Assembly", "description": "Bicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 27, "fields": {"country": "MW", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "National Assembly & local", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 1, "fields": {"country": "ML", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "Presidential", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 33, "fields": {"country": "MR", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 50, "fields": {"country": "MU", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "National Assembly", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 98, "fields": {"country": "MZ", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President, National Assembly & Provincial", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 58, "fields": {"country": "NA", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President & National Assembly", "description": "Bicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 38, "fields": {"country": "RW", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President & Chamber of Deputies (2/3)", "description": "Bicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 40, "fields": {"country": "SN", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 8, "fields": {"country": "SO", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President", "description": "Bicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 11, "fields": {"country": "ZA", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "National Assembly & Provincial Legislatures", "description": "Bicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 53, "fields": {"country": "SS", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President, National Assembly & Local", "description": "Bicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 20, "fields": {"country": "TG", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "Legislative & Regional", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}, {"model": "events.event", "pk": 22, "fields": {"country": "TN", "user": "bede", "is_active": true, "is_deleted": false, "created_at": "2024-01-20T01:13:42.616819Z", "updated_at": "2024-01-20T01:13:42.616846Z", "type": "election", "title": "President, National Council of Regions & Districts", "description": "Unicameral", "start_time": "2024-12-01T00:00:00Z", "end_time": "2024-12-28T00:00:00Z"}}]
+[
+    {
+        "model": "eventcalendar.event",
+        "pk": 76,
+        "fields": {
+            "country": "DZ",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President & Council of the Union",
+            "description": "Bicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 29,
+        "fields": {
+            "country": "BW",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "National Assembly",
+            "description": "Unicameral",
+            "start_time": "2024-06-01T00:00:00Z",
+            "end_time": "2024-06-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 3,
+        "fields": {
+            "country": "BF",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "Presidential",
+            "description": "Unicameral",
+            "start_time": "2024-02-01T00:00:00Z",
+            "end_time": "2024-02-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 37,
+        "fields": {
+            "country": "CV",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "Local",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 11,
+        "fields": {
+            "country": "TD",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President, National Assembly & Municipal Councils",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 8,
+        "fields": {
+            "country": "KM",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President & Governors (first round)",
+            "description": "Unicameral",
+            "start_time": "2024-01-01T00:00:00.000Z",
+            "end_time": "2024-01-28T00:00:00.000Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 36,
+        "fields": {
+            "country": "ET",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President",
+            "description": "Bicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 39,
+        "fields": {
+            "country": "GH",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President & National Assembly",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 79,
+        "fields": {
+            "country": "GW",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 6,
+        "fields": {
+            "country": "LY",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "Local, Parliamentary & Presidential",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 39,
+        "fields": {
+            "country": "MG",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "National Assembly",
+            "description": "Bicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 27,
+        "fields": {
+            "country": "MW",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "National Assembly & local",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 1,
+        "fields": {
+            "country": "ML",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "Presidential",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 33,
+        "fields": {
+            "country": "MR",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 50,
+        "fields": {
+            "country": "MU",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "National Assembly",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 98,
+        "fields": {
+            "country": "MZ",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President, National Assembly & Provincial",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 58,
+        "fields": {
+            "country": "NA",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President & National Assembly",
+            "description": "Bicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 38,
+        "fields": {
+            "country": "RW",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President & Chamber of Deputies (2/3)",
+            "description": "Bicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 40,
+        "fields": {
+            "country": "SN",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 8,
+        "fields": {
+            "country": "SO",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President",
+            "description": "Bicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 11,
+        "fields": {
+            "country": "ZA",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "National Assembly & Provincial Legislatures",
+            "description": "Bicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 53,
+        "fields": {
+            "country": "SS",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President, National Assembly & Local",
+            "description": "Bicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 20,
+        "fields": {
+            "country": "TG",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "Legislative & Regional",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    },
+    {
+        "model": "eventcalendar.event",
+        "pk": 22,
+        "fields": {
+            "country": "TN",
+            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "is_active": true,
+            "is_deleted": false,
+            "created_at": "2024-01-20T01:13:42.616819Z",
+            "updated_at": "2024-01-20T01:13:42.616846Z",
+            "type": "election",
+            "title": "President, National Council of Regions & Districts",
+            "description": "Unicameral",
+            "start_time": "2024-12-01T00:00:00Z",
+            "end_time": "2024-12-28T00:00:00Z"
+        }
+    }
+]
