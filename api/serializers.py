@@ -71,3 +71,8 @@ class EventSerializer(serializers.ModelSerializer):
     class Meta:
         model = Event
         fields = '__all__'
+
+class CalendarEventSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Event
+        fields = [ "type","title", "description", "start_time"]

@@ -44,5 +44,5 @@ class Calendar(HTMLCalendar):
             cal += f"{self.formatweek(week, events)}\n"
         return cal
 
-def elections:
+
     

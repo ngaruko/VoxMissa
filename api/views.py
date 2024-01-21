@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from eventcalendar.models import Event
 
 from parties.models import Party
-from .serializers import PolicySerializer, ProjectSerializer, PartySerializer, EventSerializer
+from .serializers import CalendarEventSerializer, PolicySerializer, ProjectSerializer, PartySerializer, EventSerializer
 from projects.models import Project, Review, Tag
 from policies.models import Policy
 
@@ -101,6 +101,13 @@ def getParty(request, pk):
 def getEvents(request):
     events = Event.objects.all()
     serializer = EventSerializer(events, many=True)
+    return Response(serializer.data)
+
+#calendar-events
+@api_view(['GET'])
+def getCalendarEvents(request):
+    events = Event.objects.all()
+    serializer = CalendarEventSerializer(events, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])

@@ -7,8 +7,6 @@ runtime.txt
 static/images
 staticfiles/images
 resources/
-frontend/
-
 # Django #
 *.log
 *.pot
