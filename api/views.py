@@ -107,8 +107,21 @@ def getEvents(request):
 @api_view(['GET'])
 def getCalendarEvents(request):
     events = Event.objects.all()
-    serializer = CalendarEventSerializer(events, many=True)
-    return Response(serializer.data)
+    calendarevents = []
+        # start: '2020-09-16T16:00:00'
+    for event in events:
+            calendarevents.append(
+                {   
+                    "id": event.id,
+                    "country": event.country,
+                    "title": event.title,
+                    "start": event.start_time.strftime("%Y-%m-%d"),
+                    "end": event.end_time.strftime("%Y-%m-%d"),
+                    "description": event.description,
+                }
+            )
+    serializer = EventSerializer(calendarevents, many=True)
+    return Response(calendarevents)
 
 @api_view(['GET'])
 def getEvent(request, pk):
