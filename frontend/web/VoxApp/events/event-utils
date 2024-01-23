@@ -1,0 +1,35 @@
+// import axios from 'axios';
+let eventGuid = 0
+let todayStr = new Date().toISOString().replace(/T.*$/, '') // YYYY-MM-DD of today
+console.log('PROBE 0')
+
+const INITIAL_EVENTS = [
+  
+    { id: 88,title: 'event 1', date: '2024-01-23' },
+    { id: 99, title: 'event 2', date: '2024-02-02' },
+  
+  
+]
+
+function createEventId() {
+  return String(eventGuid++)
+}
+
+// function getEvents() {
+//     axios.get('http://127.0.0.1:8000/api/calendarevents')
+//       .then(response => {
+//         console.log(response.data)
+//         return response.data;
+//       })
+//       .catch(error => {
+//         console.log(error);
+//       });
+  
+//   }
+
+
+  module.exports = {
+    INITIAL_EVENTS,
+    createEventId,
+    
+  }

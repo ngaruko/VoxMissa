@@ -1,88 +1,90 @@
-import { Calendar } from '@fullcalendar/core';
+import React from 'react'
+
+import { formatDate } from '@fullcalendar/core'
 import FullCalendar from '@fullcalendar/react'
-import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
-import timeGridPlugin from '@fullcalendar/timegrid';
+import dayGridPlugin from '@fullcalendar/daygrid'
+import timeGridPlugin from '@fullcalendar/timegrid'
+import interactionPlugin from '@fullcalendar/interaction'
 import listPlugin from '@fullcalendar/list';
-import React, {useState, useEffect} from 'react';
-import axios from 'axios';
+//import EventCalendar from './events/EventCalendar'
 import {
   StyleSheet,
+  StatusBar,
+  Platform,
   Text,
   View,
   Pressable,
   useWindowDimensions,
+  SafeAreaView,
 } from 'react-native';
+import { Calendar } from 'react-native-big-calendar'
 
-export default function App() {
-  const {height} = useWindowDimensions();
-  const [number, setNumber] = useState(0);
-  const [events, setEvents] = useState([]);
-  const apiUrl = 'http://127.0.0.1:8000/api/calendarevents/'
-  
-  useEffect(() => {
-    axios.get(apiUrl)
-      .then(response => {
-        setEvents(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  }, []);
+const events = [
+  {
+    title: 'Meeting',
+    start: new Date(2024, 1, 22, 10, 0),
+    end: new Date(2024, 1, 23, 10, 30),
+  },
+  {
+    title: 'Coffee break',
+    start: new Date(2024, 1, 24, 15, 45),
+    end: new Date(2024, 1, 24, 16, 30),
+  },
+]
 
-  function handlePress() {
-    setNumber(parseInt(Math.random() * 10000, 10) % 100);
+export default class App extends React.Component {
+
+  state = {
+    weekendsVisible: true,
+    currentEvents: []
   }
-  
-  return (
-    <FullCalendar
-      plugins={[ dayGridPlugin ]}
-      initialView="dayGridMonth"
-      events={
-        [
-        {
-            "type": "election",
-            "title": "Presidential",
-            "description": "Unicameral",
-            "start": "2024-01-21T00:00:00Z",
-            "end": "2024-01-25T00:00:00Z",
-        },
-        {
-            "type": "election",
-            "title": "Presidential",
-            "description": "Unicameral",
-            "date": "2024-02-01"
-        }
-       
-    ]}
-      // eventSources={[
-      //   {
-      //     url: apiUrl,
-      //     method:'GET',
-      //     failure: function (){
-      //       alert('Error fetching resources')
-      //     }
-      //   }
-      // ]}
-    />
-  )
 
+  render() {
+    return Platform.OS=='web'?(
+      <SafeAreaView style={styles.container}>
+        <Calendar 
+        events={events} 
+        height={600} 
+        mode='month' 
+        locale='fr'
+        showAdjacentMonths='true'
+        renderHeader={() => <Text>Calendar</Text>}
+        //renderHeaderForMonthView={() => <Text>Calendar</Text>}
+        dayHeaderHighlightColor={'#000'}
+        weekDayHeaderHighlightColor={'#aaa'}
+        headerComponent={
+          <Text style={{ color: '#aaa', fontSize: 25 }}>CalendarBody's headerComponent</Text>
+        }
+        showTime='true'
+        // onPressCell={onPressCell} 
+        // onPressEvent={onPressEvent}
+        // onChangeDate={onChangeDate}
+        />
+        <StatusBar style="auto" />
+      </SafeAreaView>      
+    ):
+    (
+      <FullCalendar
+        plugins={[ dayGridPlugin ]}
+        initialView="dayGridMonth"
+        events={[
+          { title: 'event 1', date: '2024-01-22' },
+          { title: 'event 2', date: '2024-01-25' }
+        ]}
+      />
+    )
+  }
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-//   br: {
-//     height: 12,
-//   },
-//   btn: {
-//     backgroundColor: '#222',
-//     padding: 10,
-//   },
-//   btnText: {
-//     color: '#fff',
-//   },
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+  
+  },
+  text: {
+    fontSize: 25,
+    fontWeight: '500',
+  },
+});
+
