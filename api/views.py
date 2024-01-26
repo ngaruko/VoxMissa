@@ -6,7 +6,7 @@ from eventcalendar.models import Event
 from parties.models import Party
 from .serializers import CalendarEventSerializer, PolicySerializer, ProjectSerializer, PartySerializer, EventSerializer
 from projects.models import Project, Review, Tag
-from policies.models import Policy
+from policies.models import Topic
 
 
 @api_view(['GET'])
@@ -73,13 +73,13 @@ def removeTag(request):
 
 @api_view(['GET'])
 def getPolicies(request):
-    policies = Policy.objects.all()
+    policies = Topic.objects.all()
     serializer = PolicySerializer(policies, many=True)
     return Response(serializer.data)
 
 @api_view(['GET'])
 def getPolicy(request, pk):
-    policy = Policy.objects.get(id=pk)
+    policy = Topic.objects.get(id=pk)
     serializer = PolicySerializer(policy, many=False)
     return Response(serializer.data)
 

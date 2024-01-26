@@ -1,14 +1,13 @@
 from django.db.models.base import Model
 from django.forms import ModelForm, widgets
 from django import forms
-from .models import Policy, Vote
+from .models import Topic
 
 
 class PolicyForm(ModelForm):
     class Meta:
-        model = Policy
-        fields = ['country', 'name', 'featured_image', 'description',
-                  'demo_link', 'source_link']
+        model = Topic
+        fields = ['name', 'featured_image', 'description']
         widgets = {
             'tags': forms.CheckboxSelectMultiple(),
         }
@@ -26,18 +25,18 @@ class PolicyForm(ModelForm):
         #     {'class': 'input'})
 
 
-class VoteForm(ModelForm):
-    class Meta:
-        model = Vote
-        fields = ['value', 'comment']
+# class VoteForm(ModelForm):
+#     class Meta:
+#         model = Vote
+#         fields = ['value', 'comment']
 
-        labels = {
-            'name': 'Place your vote',
-            'comment': 'Add a comment with your vote'
-        }
+#         labels = {
+#             'name': 'Place your vote',
+#             'comment': 'Add a comment with your vote'
+#         }
 
-    def __init__(self, *args, **kwargs):
-        super(VoteForm, self).__init__(*args, **kwargs)
+#     def __init__(self, *args, **kwargs):
+#         super(VoteForm, self).__init__(*args, **kwargs)
 
-        for name, field in self.fields.items():
-            field.widget.attrs.update({'class': 'input'})
+#         for name, field in self.fields.items():
+#             field.widget.attrs.update({'class': 'input'})

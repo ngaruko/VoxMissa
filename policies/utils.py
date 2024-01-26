@@ -1,4 +1,4 @@
-from .models import Policy, Tag
+from .models import Topic, Tag
 from django.db.models import Q
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
@@ -41,7 +41,7 @@ def searchPolicies(request):
 
     tags = Tag.objects.filter(name__icontains=search_query)
 
-    policies = Policy.objects.distinct().filter(
+    policies = Topic.objects.distinct().filter(
         Q(name__icontains=search_query) |
         Q(description__icontains=search_query) |
         Q(owner__name__icontains=search_query) |

@@ -1,0 +1,122 @@
+[
+    {
+        "model": "policies.subtopics",
+        "pk": "1e4e1a95-628f-4ae9-9ba3-d7d21457f31c",
+        "fields": {
+            "name": "Higher Education",
+            "description": "Policies related to higher education institutions.",
+            "featured_image": "/higher_education_image",
+            "policy": "ad15399d-26da-4d0e-9f41-2e5ba58611b4"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "2d33c129-125a-461a-80c5-4f6027558ff8",
+        "fields": {
+            "name": "School Education",
+            "description": "Policies related to primary and secondary school education.",
+            "featured_image": "/school_education_image",
+            "policy": "ad15399d-26da-4d0e-9f41-2e5ba58611b4"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "c88c8b56-7b7b-40b7-b2e5-c13a2262015e",
+        "fields": {
+            "name": "Pre-School Education",
+            "description": "Policies related to early childhood education.",
+            "featured_image": "/pre_school_education_image",
+            "policy": "ad15399d-26da-4d0e-9f41-2e5ba58611b4"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "ea3e16d5-c381-4a89-8df0-bb9f6a7a71d9",
+        "fields": {
+            "name": "Environmental Protection",
+            "description": "Policies aimed at preserving and protecting the environment.",
+            "featured_image": "/environmental_protection_image",
+            "policy": "c12539db-7db3-4dd4-9ce9-4b567692ba29"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "90a36769-8c7a-4290-b869-3c58f70a59d2",
+        "fields": {
+            "name": "Public Health",
+            "description": "Policies focused on public health and healthcare services.",
+            "featured_image": "/public_health_image",
+            "policy": "1d20c4c0-ebe1-46e5-8d44-6a367fe14634"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "080f2679-2ab6-4c0a-8f2a-77da68267a49",
+        "fields": {
+            "name": "Affordable Housing",
+            "description": "Policies to address housing affordability and availability.",
+            "featured_image": "/affordable_housing_image",
+            "policy": "22ae8138-76f4-4e3e-98cf-8362f4c6899e"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "4d0c3cc2-768a-42cc-8101-6348bb82b779",
+        "fields": {
+            "name": "Employment Opportunities",
+            "description": "Policies promoting job creation and employment opportunities.",
+            "featured_image": "/employment_opportunities_image",
+            "policy": "e05f23f4-c5a2-4c52-88cf-81a0f85f2b18"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "e52f378a-c6ce-45f1-8a11-97f3095d8a69",
+        "fields": {
+            "name": "Legal System",
+            "description": "Policies related to the legal system and justice.",
+            "featured_image": "/legal_system_image",
+            "policy": "f54fc2b1-0f24-4d60-8de5-5b75f5a1531d"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "0e06f646-7c33-48fb-ba4e-cd5ac1350507",
+        "fields": {
+            "name": "Cultural Preservation",
+            "description": "Policies supporting cultural activities and heritage preservation.",
+            "featured_image": "/cultural_preservation_image",
+            "policy": "ea6da8ef-cf44-4934-9010-e2516e783438"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "4d0d8d15-cf61-42cc-8f9b-6d319381605a",
+        "fields": {
+            "name": "Sports Development",
+            "description": "Policies fostering sports activities and development.",
+            "featured_image": "/sports_development_image",
+            "policy": "049cc11e-8cd1-49c8-826d-3c89d0d5e7e2"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "86c4b95c-5b9b-4345-9db5-b2f7cf36de2b",
+        "fields": {
+            "name": "Infrastructure Development",
+            "description": "Policies focused on developing and maintaining infrastructure.",
+            "featured_image": "/infrastructure_development_image",
+            "policy": "e4602461-93cb-4ad3-9f6d-7946f03c9b15"
+        }
+    },
+    {
+        "model": "policies.subtopics",
+        "pk": "93e49718-f971-4f16-9641-d47032d43893",
+        "fields": {
+            "name": "Natural Resource Management",
+            "description": "Sustainable management of natural resources and environmental conservation.",
+            "featured_image": "/natural_resource_management_image",
+            "policy": "7e35db17-07d1-4b91-9c69-b9902e635f4e"
+        }
+    }
+]

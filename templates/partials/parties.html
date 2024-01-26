@@ -27,11 +27,10 @@
                 <div class="column">
                     <div class="card party">
                         <a href="{% url 'party' party.id %}" class="party">
-                            <img class="party__thumbnail" src="{{party.official_logo}}" alt="party thumbnail" />
+                            
+                            <img class="party__thumbnail" src="{{party.imageURL}}" alt="party thumbnail" />
                             <div class="card__body">
-                                <h4 class="party__title">{{party.name}} ({{ party.acronym }})</h4>
-                                <p class="party__author"> Leader: {{party.leader }}</p>
-
+                                <h4 class="party__title">{{party.name | slice:":35"}} ({{ party.acronym }})</h4>
                                 <p><a class="party__author" href="#">Leader: 
                                         {{party.leader}}
                                 </p>

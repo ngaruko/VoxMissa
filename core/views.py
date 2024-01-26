@@ -7,8 +7,10 @@ from django.db.models import Q
 
 from users.models import Profile
 from django.utils.text import slugify
-from policies.models import Policy
+from policies.models import Topic
 import json
+import uuid
+
 from django.core.serializers.json import DjangoJSONEncoder
 
 ###
@@ -57,19 +59,28 @@ def home(request):
 
     #getParties(africa)
     #getElections()
+    
+    # with open('policies.json') as json1:
+    #     data = json.load(json1)
+    #     for item in data:
+    #         item['pk']=uuid.uuid4
+
+    # with open('policies.json', 'w') as json1:
+    #     json.dump(data, json1, cls=DjangoJSONEncoder)
+
     return render(request, 'home.html', context)
 
 
 
 def country(request, pk):
-    countryObj = [country for country in  Countries() if country.code ==pk][0] 
+    countryObj = [country for country in  Countries() if country.code.casefold() ==pk.casefold()][0] 
     print('Page: ' + countryObj.name)   
     candidates = Profile.objects.all()
     programs = Project.objects.filter(country__name=countryObj.name)
     policies = Project.objects.filter(country__name=countryObj.name)
     parties = Party.objects.filter(country__name=countryObj.name)
-    
-   
+    party = parties[9]
+    print(party. name + '>>>>' + party.imageURL)
     context = {'countries': Countries(),  'africa' :africa, 'country': countryObj, 'policies': policies, 'projects': programs, 
                'profiles':candidates, 'parties': parties}
     return render(request, 'country.html', context)

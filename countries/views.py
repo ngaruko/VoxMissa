@@ -7,7 +7,7 @@ from django.db.models import Q
 
 from users.models import Profile
 from django.utils.text import slugify
-from policies.models import Policy
+from policies.models import Topic
 import json
 from django.core.serializers.json import DjangoJSONEncoder
 

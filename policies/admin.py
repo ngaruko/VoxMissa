@@ -1,8 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from .models import Policy, Vote, Subtopic
+from .models import Topic, Subtopic
 
-admin.site.register(Policy)
-admin.site.register(Vote)
+admin.site.register(Topic)
 admin.site.register(Subtopic)

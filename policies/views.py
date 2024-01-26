@@ -3,11 +3,10 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import Policy, Tag, Subtopic
-from .forms import PolicyForm, VoteForm
+from .models import Topic, Tag, Subtopic
+from .forms import PolicyForm
 from .utils import searchPolicies, paginatePolicies
 from django.views.generic.detail import DetailView
-
 from django.http import HttpResponse
 from django.views.generic import ListView
 
@@ -49,35 +48,22 @@ def policies(request):
     return render(request, 'policies/policies.html', context)
 
 def subtopics(request, policy_id):
-    policyObj = Policy.objects.get(id=policy_id)
+    policyObj = Topic.objects.get(id=policy_id)
     subtopics = policyObj.subtopic_set.all()
     return render(request, 'policies/subtopics.html', {'subtopics': subtopics})
 
       
 def policy(request, policy_id):
-    policyObj = Policy.objects.get(id=policy_id)
-    form = VoteForm()
-
-    if request.method == 'POST':
-        form = VoteForm(request.POST)
-        review = form.save(commit=False)
-        review.policy = policyObj
-        review.owner = request.user.profile
-        review.save()
-
-        policyObj.getVoteCount
-
-        messages.success(request, 'Your review was successfully submitted!')
-        return redirect('policy', pk=policyObj.id)
+    policyObj = Topic.objects.get(id=policy_id)
     
     subtopics = policyObj.subtopic_set.all()
 
-    context = {'policy': policyObj, 'subtopics': subtopics, 'form': form}
+    context = {'policy': policyObj, 'subtopics': subtopics}
 
     return render(request, 'policies/single-policy.html', context)
 
 def subtopic(request, policy_id, subtopic_id):
-    policyObj = Policy.objects.get(id=policy_id)
+    policyObj = Topic.objects.get(id=policy_id)
     subtopic = Subtopic.objects.get(id=subtopic_id)
     # form = VoteForm()
 
