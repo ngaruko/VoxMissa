@@ -7,8 +7,14 @@ from django.contrib.auth import views as auth_views
 from . import views
 from eventcalendar.views import DashboardView
 
+    #sentr trigger error
+     
+def trigger_error(request):
+    division_by_zero = 1 / 0
 
 urlpatterns = [
+        #sentr trigger error
+    path('sentry-debug/', trigger_error),
     path("dashboard", DashboardView.as_view(), name="dashboard"),
     path('admin/', admin.site.urls),
     path('projects/', include('projects.urls')),
@@ -35,9 +41,9 @@ urlpatterns = [
          name="password_reset_confirm"),
 
     path('reset_password_complete/', auth_views.PasswordResetCompleteView.as_view(template_name="reset_password_complete.html"),
-         name="password_reset_complete"),
+         name="password_reset_complete"),   
+     
 ]
-
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
