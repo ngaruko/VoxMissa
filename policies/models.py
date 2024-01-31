@@ -19,6 +19,7 @@ class Topic(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     subtopics= models.ManyToManyField('Subtopic', verbose_name="list of subtopics", blank=True)
+    tags= models.ManyToManyField('Tag', verbose_name="list of subtopics", blank=True)
     featured_image = models.ImageField(
         null=True, blank=True, default="default.jpg")
     created = models.DateTimeField(auto_now_add=True, null=True)

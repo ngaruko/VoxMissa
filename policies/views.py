@@ -47,14 +47,14 @@ def policies(request):
                'search_query': search_query, 'custom_range': custom_range}
     return render(request, 'policies/policies.html', context)
 
-def subtopics(request, policy_id):
-    policyObj = Topic.objects.get(id=policy_id)
+def subtopics(request, pk):
+    policyObj = Topic.objects.get(id=pk)
     subtopics = policyObj.subtopic_set.all()
     return render(request, 'policies/subtopics.html', {'subtopics': subtopics})
 
       
-def policy(request, policy_id):
-    policyObj = Topic.objects.get(id=policy_id)
+def policy(request, pk):
+    policyObj = Topic.objects.get(id=pk)
     
     subtopics = policyObj.subtopic_set.all()
 
@@ -62,8 +62,8 @@ def policy(request, policy_id):
 
     return render(request, 'policies/single-policy.html', context)
 
-def subtopic(request, policy_id, subtopic_id):
-    policyObj = Topic.objects.get(id=policy_id)
+def subtopic(request, pk, subtopic_id):
+    policyObj = Topic.objects.get(id=pk)
     subtopic = Subtopic.objects.get(id=subtopic_id)
     # form = VoteForm()
 
@@ -95,7 +95,7 @@ def createPolicy(request):
         form = PolicyForm(request.POST, request.FILES)
         if form.is_valid():
             policy = form.save(commit=False)
-            policy.owner = profile
+            # policy.owner = profile
             policy.save()
 
             for tag in newtags:
