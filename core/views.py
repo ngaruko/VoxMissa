@@ -79,8 +79,6 @@ def country(request, pk):
     programs = Project.objects.filter(country__name=countryObj.name)
     policies = Project.objects.filter(country__name=countryObj.name)
     parties = Party.objects.filter(country__name=countryObj.name)
-    party = parties[9]
-    print(party. name + '>>>>' + party.imageURL)
     context = {'countries': Countries(),  'africa' :africa, 'country': countryObj, 'policies': policies, 'projects': programs, 
                'profiles':candidates, 'parties': parties}
     return render(request, 'country.html', context)
