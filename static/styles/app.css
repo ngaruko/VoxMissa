@@ -1,5 +1,6 @@
 :root {
   --color-sub: #2d2d39;
+  --color-bg: #2d2d39;
 }
 
 .btn--sub {
@@ -7,7 +8,7 @@
 }
 
 .card {
-  border: 2px solid var(--color-light);
+  border: 1.5px solid var(--color-bg);
 }
 
 img {

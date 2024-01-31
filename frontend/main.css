@@ -1,5 +1,6 @@
 body{
-    background-color: #f8fafb;
+    color: var(--color-light-gray);
+  background-color: var(--color-bg);
     margin: 0;
 }
 

@@ -1,3 +1,8 @@
+body{
+    color: var(--color-light-gray);
+  background-color: var(--color-bg);
+    margin: 0;
+}
 h1{
     color: purple;
 }

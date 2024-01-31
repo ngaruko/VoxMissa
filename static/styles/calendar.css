@@ -2,6 +2,7 @@
     width: 98%;
     margin: auto;
     font-size: 13px;
+    background-color: var(--color-bg);
   }
 
   .calendar tr, .calendar td {

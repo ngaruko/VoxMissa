@@ -33,7 +33,7 @@ a.disabled {
 }
 .country_selector_modal .country-selector-modal-content {
   position: relative;
-  background-color: #fff;
+  background-color: var(--color-bg);
   -webkit-background-clip: padding-box;
           background-clip: padding-box;
   border: 1px solid #999;
