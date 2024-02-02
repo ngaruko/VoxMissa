@@ -83,6 +83,9 @@ def country(request, pk):
                'profiles':candidates, 'parties': parties}
     return render(request, 'country.html', context)
 
+def placeholder(request):
+    return render(request, 'placeholder.html')
+
 def seed(request):
     #Test data scrapped from wikipedia > political parties
     getParties(africa)

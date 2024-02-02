@@ -25,9 +25,11 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('calendar/', include('eventcalendar.urls')),
     path('api/', include('api.urls')),
+    path('seed', views.seed, name="home"),
+    path('placeholder', views.placeholder, name="placeholder"),
 
     #this has to be last. Poor design I know, but I am working on it
-    path('seed', views.seed, name="home"),
+    
     path('', views.home, name="home"),
     path('<str:pk>/', views.country, name="country"),
 
