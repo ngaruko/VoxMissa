@@ -109,7 +109,8 @@ def create_acronym(phrase):
         for word in words:
             
             acronym += word[0].upper()
-        return acronym
+        return acronym 
+
 
 def getData(soup, country):
     country_name = country.name
@@ -215,14 +216,23 @@ def getParties(countries):
                                     "Leader":"leader",
                                     "Chairperson":"leader", "President":"leader", "Party leader": "leader"}, inplace=True)
             
+            #remove arabic and french names
+            df["name"] = df["name"].map(lambda n: n.rsplit(" Arabic")[0])
+            df["name"] = df["name"].map(lambda n: n.rsplit("[ar]")[0])  
+            
+            df["name"] = df["name"].map(lambda n: n.rsplit(" French")[0]) 
+            df["name"] = df["name"].map(lambda n: n.rsplit('[ar; fr]')[0]) 
+            
+
             if "acronym" not in df.columns:
                 df["acronym"] = df["name"].map(lambda x:  create_acronym(x))
             if "ideology" not in df.columns:
-                df["ideology"] = df["name"].map(lambda x:    " No Data for " + x[0])
+                df["ideology"] = df["name"].map(lambda x: create_acronym(x))
             if "leader" not in df.columns:
-                df["leader"] = df["name"].map(lambda x:    " No Data for " + x[0])
+                df["leader"] = df["name"].map(lambda x: create_acronym(x))
 
             df2 = df[["name", "acronym", "leader", "ideology"]]
+            df2.fillna('Missing Data', inplace=True)
             print(df2.head())
             dict_list = df2.to_dict("records")
             for el in dict_list:

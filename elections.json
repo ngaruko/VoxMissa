@@ -4,7 +4,7 @@
         "pk": 76,
         "fields": {
             "country": "DZ",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -21,7 +21,7 @@
         "pk": 29,
         "fields": {
             "country": "BW",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -38,7 +38,7 @@
         "pk": 3,
         "fields": {
             "country": "BF",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -55,7 +55,7 @@
         "pk": 37,
         "fields": {
             "country": "CV",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -72,7 +72,7 @@
         "pk": 11,
         "fields": {
             "country": "TD",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -89,7 +89,7 @@
         "pk": 8,
         "fields": {
             "country": "KM",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -106,7 +106,7 @@
         "pk": 36,
         "fields": {
             "country": "ET",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -123,7 +123,7 @@
         "pk": 39,
         "fields": {
             "country": "GH",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -140,7 +140,7 @@
         "pk": 79,
         "fields": {
             "country": "GW",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -157,7 +157,7 @@
         "pk": 6,
         "fields": {
             "country": "LY",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -174,7 +174,7 @@
         "pk": 39,
         "fields": {
             "country": "MG",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -191,7 +191,7 @@
         "pk": 27,
         "fields": {
             "country": "MW",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -208,7 +208,7 @@
         "pk": 1,
         "fields": {
             "country": "ML",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -225,7 +225,7 @@
         "pk": 33,
         "fields": {
             "country": "MR",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -242,7 +242,7 @@
         "pk": 50,
         "fields": {
             "country": "MU",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -259,7 +259,7 @@
         "pk": 98,
         "fields": {
             "country": "MZ",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -276,7 +276,7 @@
         "pk": 58,
         "fields": {
             "country": "NA",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -293,7 +293,7 @@
         "pk": 38,
         "fields": {
             "country": "RW",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -310,7 +310,7 @@
         "pk": 40,
         "fields": {
             "country": "SN",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -327,7 +327,7 @@
         "pk": 8,
         "fields": {
             "country": "SO",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -344,7 +344,7 @@
         "pk": 11,
         "fields": {
             "country": "ZA",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -361,7 +361,7 @@
         "pk": 53,
         "fields": {
             "country": "SS",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -378,7 +378,7 @@
         "pk": 20,
         "fields": {
             "country": "TG",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",
@@ -395,7 +395,7 @@
         "pk": 22,
         "fields": {
             "country": "TN",
-            "user": "da5a93ac-eb1d-4dc2-b0e0-cc4833e1d268",
+            "user":"9269dfaa-d477-425f-b50e-427fe775ba6a",
             "is_active": true,
             "is_deleted": false,
             "created_at": "2024-01-20T01:13:42.616819Z",

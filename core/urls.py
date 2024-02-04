@@ -25,13 +25,13 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('calendar/', include('eventcalendar.urls')),
     path('api/', include('api.urls')),
-    path('seed', views.seed, name="home"),
+    path('seed', views.seed, name="seed"),
     path('placeholder', views.placeholder, name="placeholder"),
 
     #this has to be last. Poor design I know, but I am working on it
     
     path('', views.home, name="home"),
-    path('<str:pk>/', views.country, name="country"),
+    path('country/<str:pk>/', views.country, name="country"),
 
     path('reset_password/', auth_views.PasswordResetView.as_view(template_name="reset_password.html"),
          name="reset_password"),

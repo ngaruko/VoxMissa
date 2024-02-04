@@ -49,6 +49,7 @@
               <li class="header__menuItem"><a href="#candidates-tab">Candidates</a></li>
               <li class="header__menuItem"><a href="#programs-tab">Programs</a></li>
               <li class="header__menuItem"><a href="#forum-tab">Forum</a></li>
+              <li class="header__menuItem"><a href="#event-tab">Events</a></li>
             </ul> <!-- END tabs-nav -->
             <div id="tabs-content">
               <div id="party-tab" class="tab-content">
@@ -65,6 +66,15 @@
                </div>
               <div id="forum-tab" class="tab-content">
                 {% include 'partials/forum.html' %}
+              </div>
+              <div id="event-tab" class="tab-content">
+                <!-- {% for event in events %}
+                <h2>Type: {{ event.type }}</h2>
+                <p>Name: {{ event.title }}</p>
+                <p>Date: {{ event.start_time }}-{{ event.end_time }}</p>
+                {% endfor %} -->
+
+                {% include 'partials/calendar.html' %}
               </div>
             </div> <!-- END tabs-content -->
           </div> <!-- END tabs -->

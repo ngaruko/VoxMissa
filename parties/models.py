@@ -20,7 +20,7 @@ class Party(models.Model):
     owner = models.ForeignKey(
         Profile, null=True, blank=True, on_delete=models.SET_NULL)
     name = models.CharField(max_length=200)
-    acronym = models.CharField(max_length=10, null=True, blank=True)
+    acronym = models.CharField(max_length=100, null=True, blank=True)
     leader = models.CharField(max_length=200, null=True, blank=True)
     description = models.TextField(max_length=2000, null=True, blank=True)
     policies = models.ManyToManyField('Policy', null=True)
@@ -55,12 +55,12 @@ class Party(models.Model):
 
     @property
     def reviewers(self):
-        queryset = self.review_set.all().values_list('voter__id', flat=True)
+        queryset = self.vote_set.all().values_list('voter__id', flat=True)
         return queryset
 
     @property
     def getVoteCount(self):
-        reviews = self.review_set.all()
+        reviews = self.vote_set.all()
         upVotes = reviews.filter(value='up').count()
         totalVotes = reviews.count()
 
@@ -150,12 +150,12 @@ class Policy(models.Model):
 
     @property
     def reviewers(self):
-        queryset = self.review_set.all().values_list('owner__id', flat=True)
+        queryset = self.vote_set.all().values_list('owner__id', flat=True)
         return queryset
 
     @property
     def getVoteCount(self):
-        reviews = self.review_set.all()
+        reviews = self.vote_set.all()
         upVotes = reviews.filter(value='up').count()
         totalVotes = reviews.count()
 

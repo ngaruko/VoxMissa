@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from django_countries import Countries
 from parties.models import Party
 from projects.models import Project
+from eventcalendar.models import Event
 from django.db.models import Q
 
 from users.models import Profile
@@ -23,7 +24,7 @@ from .utils import getElections, searchCountries, getParties
 africa  = [country for country in Countries() if country.code in ['AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CF', 'CG', 'CI', 'CM', 'CV', 'DJ', 'DZ', 'EG', 'ER', 'ET', 'GA', 'GH',
         'GM', 'GN', 'GQ', 'GW', 'KE', 'KM', 'LS', 'LR', 'LY', 'MA', 'MG', 'ML', 'MR', 'MU', 'MW', 'MZ', 'NA', 'NE', 'NG', 'RW',
         'SC', 'SD', 'SL', 'SN', 'SO', 'SS', 'ST', 'SZ', 'TD', 'TG', 'TN', 'TZ', 'UG', 'ZA', 'ZM', 'ZW' ]]
-    
+algeria  = [country for country in Countries() if country.code in ['DZ']]  
 america = [country for country in Countries() if country.code in ['AG', 'AR', 'BS', 'BB', 'BZ', 'BM', 'BO', 'BR', 'CA', 'CL', 'CO', 'CR', 'CU', 'DM', 'DO', 'EC', 'SV', 'GD', 'GT', 
             'GY', 'HT', 'HN', 'JM', 'MX', 'NI', 'PA', 'PY', 'PE', 'PR', 'KN', 'LC', 'VC', 'SR', 'TT', 'US', 'UY', 'VE'
             ]]
@@ -79,8 +80,11 @@ def country(request, pk):
     programs = Project.objects.filter(country__name=countryObj.name)
     policies = Project.objects.filter(country__name=countryObj.name)
     parties = Party.objects.filter(country__name=countryObj.name)
+    events_month = Event.objects.filter(country__name=countryObj.name)
+    print('events...')
+    print(events_month)
     context = {'countries': Countries(),  'africa' :africa, 'country': countryObj, 'policies': policies, 'projects': programs, 
-               'profiles':candidates, 'parties': parties}
+               'profiles':candidates, 'parties': parties, 'events':events_month}
     return render(request, 'country.html', context)
 
 def placeholder(request):
@@ -89,5 +93,6 @@ def placeholder(request):
 def seed(request):
     #Test data scrapped from wikipedia > political parties
     getParties(africa)
+    print('getting party data..')
     #Party.objects.all().delete()
-    return render(request, 'Parties seeded !', { })
+    return render(request, 'placeholder.html')

@@ -1,12 +1,23 @@
 {% extends 'main.html' %}
+{% load static %}
+{% block extracss %}
+<link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
+<!-- Flags -->
+<link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css />
+<!-- country selector UI -->
+<link rel="stylesheet" href="{% static 'mapglyphs/2.0/mapglyphs.css' %}" />   
+{% endblock extracss %}
 
 {% block content %}
+
+
 
 <!-- Main Section -->
 <main class="singleParty my-md">
     <div class="container">
         <div class="layout">
-            <h4 style="width: 10%;"><a href="#"><i class="mg map-{{ party.country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ party.country.code |lower }} circle"></span>{{ party.country.name }}</a></h4>
+            <!-- <h4 style="width: 10%;"><a href="#"><i class="mg map-{{ party.country.code |lower }}"></i><span> <img src='{{party.country.flag}}'/> </span> {{ party.country.name }}</a></h4> -->
+            <h3> <a href="#"><i class="mg map-{{ party.country.code |lower }}"></i><span class="flag-icon country_selector_page_flag flag-icon-{{ party.country.code |lower }} circle"></span> {{ party.country.name }}</a></h3>
 
             <div class="column column--1of3">
 
@@ -37,7 +48,7 @@
             <div class="column column--2of3">
                 <img class="singleParty__preview" src="{{ party.imageURL }}" alt="portfolio thumbnail" />
                
-                    class="singleParty__Candidate">{{party.leader}}
+                    <class="singleParty__Candidate">{{party.leader}}
                 <h2 class="singleParty__title">{{party.name}} || {{ party.country }}</h2>
                 <h3 class="singleParty__subtitle">About the Party</h3>
                 <div class="singleParty__info">
@@ -72,7 +83,7 @@
                     {% endif %}
 
                     <div class="commentList">
-                        {% for review in party.review_set.all %}
+                        {% for review in party.vote_set.all %}
                         {% if review.body %}
                         <div class="comment">
                             <a href="{% url 'user-profile' review.owner.id  %}">

@@ -8,7 +8,6 @@
   <link rel="stylesheet" type="text/css" href="{% static 'calendar/style.css' %}" />
   <!-- Font-icon css-->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
-  <link rel='stylesheet' href=https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css />
 {% endblock extracss %}
 
 {% block content %}
@@ -29,9 +28,7 @@
                     <h4 class="mb-4">Running Events</h4>
                     {% for event in events_month %}
                       <div class="fc-event">
-                          <!-- <h3>{{ event.country.flag }} {{ event.country.name }} : {{ event.title }}</h3> -->
-                          <h3> <span class="flag-icon flag-icon-{{ event.country.code | lower }}"> </span> {{ event.country.name }} </h3>
-                          <h3>{{ event.title }}</h3>
+                          <h3>{{ event.country.name }} : {{ event.title }}</h3>
                           <p>{{ event.description }}</p>
                           <p>{{event.id}}</p>
                           <p>From: {{ event.start_time }}</p>
