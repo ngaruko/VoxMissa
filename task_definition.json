@@ -1,5 +1,5 @@
 {
-  "taskDefinitionArn": "arn:aws:ecs:us-east-1:536759621179:task-definition/vox-stack:1",
+  "executionRoleArn": "arn:aws:iam::123456789:role/EcsGaRole",
     "containerDefinitions": [{
       "name": "voxmissa",
       "image": "536759621179.dkr.ecr.us-east-1.amazonaws.com/voxmissa:d78cc91a47093c8d3ea3eee7ab4721dcadb85552",
