@@ -6,7 +6,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: ci_cd
+  ECR_REPOSITORY: voxmissa
   ECS_SERVICE: VoxService
   ECS_CLUSTER: VoxCluster
   ECS_TASK_DEFINITION: ./task_definition.json
