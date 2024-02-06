@@ -18,7 +18,8 @@ from django.core.serializers.json import DjangoJSONEncoder
 from django.core import paginator
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from .utils import getElections, searchCountries, getParties              
+from .utils import getElections, searchCountries
+              
 
 
 africa  = [country for country in Countries() if country.code in ['AO', 'BF', 'BI', 'BJ', 'BW', 'CD', 'CF', 'CG', 'CI', 'CM', 'CV', 'DJ', 'DZ', 'EG', 'ER', 'ET', 'GA', 'GH',
@@ -92,7 +93,7 @@ def placeholder(request):
 
 def seed(request):
     #Test data scrapped from wikipedia > political parties
-    getParties(africa)
+    #getParties(africa)
     print('getting party data..')
     #Party.objects.all().delete()
     return render(request, 'placeholder.html')

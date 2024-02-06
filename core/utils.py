@@ -12,7 +12,7 @@ import json
 import re
 from django.core.serializers.json import DjangoJSONEncoder
 ### test wiki
-import pandas as pd # library for data analysis
+# import pandas as pd # library for data analysis
 import requests # library to handle requests
 from bs4 import BeautifulSoup # library to parse HTML documents
 
@@ -149,100 +149,100 @@ def getData(soup, country):
                 data.append(el2)
 
         
-def getParties(countries):
+# def getParties(countries):
     
-    for country in countries:
-        print('TESTING...' + country.name)
-        prefix = country.name
+#     for country in countries:
+#         print('TESTING...' + country.name)
+#         prefix = country.name
         
-        # get the response in the form of html
-        if country.name == 'Congo (the Democratic Republic of the)':
-            prefix = 'the Democratic Republic of the Congo'
-        if country.name == 'Cabo Verde':
-            prefix ='Cape Verde'
+#         # get the response in the form of html
+#         if country.name == 'Congo (the Democratic Republic of the)':
+#             prefix = 'the Democratic Republic of the Congo'
+#         if country.name == 'Cabo Verde':
+#             prefix ='Cape Verde'
 
-        if country.name == 'Congo':
-            prefix ='the Republic of the Congo'
+#         if country.name == 'Congo':
+#             prefix ='the Republic of the Congo'
         
-        wikiurl="https://en.wikipedia.org/wiki/List_of_political_parties_in_" + prefix.replace(' ', '_')
-        table_class="wikitable sortable jquery-tablesorter"
-        response=requests.get(wikiurl)
-        print(response.status_code)
-        if(response.status_code != 200):
-            print('Nothing found for country: ' + country.name)
-            return
+#         wikiurl="https://en.wikipedia.org/wiki/List_of_political_parties_in_" + prefix.replace(' ', '_')
+#         table_class="wikitable sortable jquery-tablesorter"
+#         response=requests.get(wikiurl)
+#         print(response.status_code)
+#         if(response.status_code != 200):
+#             print('Nothing found for country: ' + country.name)
+#             return
         
 
-        soup = BeautifulSoup(response.text, 'html.parser')
-        if country.name in ['Chad', 'Mali', 'Eswatini', 'Libya', 'Sudan']:
-            getData(soup, country)
-            continue
-        table = soup.find('table',{'class':"wikitable"})
-        if table:
-            df=pd.read_html(str(table))
+#         soup = BeautifulSoup(response.text, 'html.parser')
+#         if country.name in ['Chad', 'Mali', 'Eswatini', 'Libya', 'Sudan']:
+#             getData(soup, country)
+#             continue
+#         table = soup.find('table',{'class':"wikitable"})
+#         if table:
+#             df=pd.read_html(str(table))
 
-            df=pd.DataFrame(df[0])
-            df = df.dropna(axis=1, how='all')
-            print(df.head())
-            df.dropna(axis=1, how='all')
+#             df=pd.DataFrame(df[0])
+#             df = df.dropna(axis=1, how='all')
+#             print(df.head())
+#             df.dropna(axis=1, how='all')
             
-            df.rename(columns={ "Abbr.":"acronym", "acronym":"acronym", 'Ideologies': "ideology", 'Ideology': "ideology"})
+#             df.rename(columns={ "Abbr.":"acronym", "acronym":"acronym", 'Ideologies': "ideology", 'Ideology': "ideology"})
 
-            if country.name == 'Angola':
-                df.rename(columns={ "Party.3":"name", "Party.2": "acronym"}, inplace=True) 
-            elif country.name == 'Nigeria':
-                df.rename(columns={ "Party.1":"name", "Party.2": "acronym", 'Chairperson':"leader"}, inplace=True)
-            elif country.name == 'Liberia' or country.name =='Rwanda':
-                df.rename(columns={ "Party.3":"name"}, inplace=True)
-            elif country.name == 'Ghana':
-                df.rename(columns={ "Name.2":"name"}, inplace=True)
-            elif country.name == 'Namibia':
-                df.rename(columns={ "Party[2].1":"name"}, inplace=True)
-            elif country.name == 'Djibouti':
-                df.rename(columns={ "Coalition.1":"name"}, inplace=True)
-            elif country.name == 'Congo (the Democratic Republic of the)':
-                df.rename(columns={ "Alliance.1":"name"}, inplace=True)
-            else :
-                df.rename(columns={ "Party.1":"name",
-                                "Party.2":"name",
-                                    "Abbr.":"acronym",
-                                    "Name.1": "name",
-                                    "Party/Group.1":"name",
-                                    "Party[1].1 ":"name",
-                                    "Party[1].1": "name",    
-                                    "Main ideology": "ideology",
-                                    "Main Ideology": "ideology",
-                                    "Ideology": "ideology",
-                                    "Leader":"leader",
-                                    "Chairperson":"leader", "President":"leader", "Party leader": "leader"}, inplace=True)
+#             if country.name == 'Angola':
+#                 df.rename(columns={ "Party.3":"name", "Party.2": "acronym"}, inplace=True) 
+#             elif country.name == 'Nigeria':
+#                 df.rename(columns={ "Party.1":"name", "Party.2": "acronym", 'Chairperson':"leader"}, inplace=True)
+#             elif country.name == 'Liberia' or country.name =='Rwanda':
+#                 df.rename(columns={ "Party.3":"name"}, inplace=True)
+#             elif country.name == 'Ghana':
+#                 df.rename(columns={ "Name.2":"name"}, inplace=True)
+#             elif country.name == 'Namibia':
+#                 df.rename(columns={ "Party[2].1":"name"}, inplace=True)
+#             elif country.name == 'Djibouti':
+#                 df.rename(columns={ "Coalition.1":"name"}, inplace=True)
+#             elif country.name == 'Congo (the Democratic Republic of the)':
+#                 df.rename(columns={ "Alliance.1":"name"}, inplace=True)
+#             else :
+#                 df.rename(columns={ "Party.1":"name",
+#                                 "Party.2":"name",
+#                                     "Abbr.":"acronym",
+#                                     "Name.1": "name",
+#                                     "Party/Group.1":"name",
+#                                     "Party[1].1 ":"name",
+#                                     "Party[1].1": "name",    
+#                                     "Main ideology": "ideology",
+#                                     "Main Ideology": "ideology",
+#                                     "Ideology": "ideology",
+#                                     "Leader":"leader",
+#                                     "Chairperson":"leader", "President":"leader", "Party leader": "leader"}, inplace=True)
             
-            #remove arabic and french names
-            df["name"] = df["name"].map(lambda n: n.rsplit(" Arabic")[0])
-            df["name"] = df["name"].map(lambda n: n.rsplit("[ar]")[0])  
+#             #remove arabic and french names
+#             df["name"] = df["name"].map(lambda n: n.rsplit(" Arabic")[0])
+#             df["name"] = df["name"].map(lambda n: n.rsplit("[ar]")[0])  
             
-            df["name"] = df["name"].map(lambda n: n.rsplit(" French")[0]) 
-            df["name"] = df["name"].map(lambda n: n.rsplit('[ar; fr]')[0]) 
+#             df["name"] = df["name"].map(lambda n: n.rsplit(" French")[0]) 
+#             df["name"] = df["name"].map(lambda n: n.rsplit('[ar; fr]')[0]) 
             
 
-            if "acronym" not in df.columns:
-                df["acronym"] = df["name"].map(lambda x:  create_acronym(x))
-            if "ideology" not in df.columns:
-                df["ideology"] = df["name"].map(lambda x: create_acronym(x))
-            if "leader" not in df.columns:
-                df["leader"] = df["name"].map(lambda x: create_acronym(x))
+#             if "acronym" not in df.columns:
+#                 df["acronym"] = df["name"].map(lambda x:  create_acronym(x))
+#             if "ideology" not in df.columns:
+#                 df["ideology"] = df["name"].map(lambda x: create_acronym(x))
+#             if "leader" not in df.columns:
+#                 df["leader"] = df["name"].map(lambda x: create_acronym(x))
 
-            df2 = df[["name", "acronym", "leader", "ideology"]]
-            df2.fillna('Missing Data', inplace=True)
-            print(df2.head())
-            dict_list = df2.to_dict("records")
-            for el in dict_list:
+#             df2 = df[["name", "acronym", "leader", "ideology"]]
+#             df2.fillna('Missing Data', inplace=True)
+#             print(df2.head())
+#             dict_list = df2.to_dict("records")
+#             for el in dict_list:
                     
-                    data.append(build_fixture(el, country))
+#                     data.append(build_fixture(el, country))
     
-    print(data)
+#     print(data)
 
-    with open("country.json", "w") as outfile:
-        json.dump(data, outfile, cls=DjangoJSONEncoder)
+#     with open("country.json", "w") as outfile:
+#         json.dump(data, outfile, cls=DjangoJSONEncoder)
     
 
 def getElections(): 
