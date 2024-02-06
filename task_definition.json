@@ -2,7 +2,7 @@
     "executionRoleArn": "arn:aws:iam::536759621179:role/EcsGaRole",
     "containerDefinitions": [{
       "name": "voxmissa",
-      "image": "dkr.ecr.eu-west-2.amazonaws.com/ci_cd",
+      "image": "dkr.ecr.us-east-1.amazonaws.com/ci_cd",
       "memory": "2048",
       "essential": true,
       "portMappings": [{
