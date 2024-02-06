@@ -1,8 +1,8 @@
 {
-    "executionRoleArn": "arn:aws:iam::536759621179:role/EcsGaRole",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-1:536759621179:task-definition/vox-stack:1",
     "containerDefinitions": [{
       "name": "voxmissa",
-      "image": "dkr.ecr.us-east-1.amazonaws.com/voxmissa",
+      "image": "536759621179.dkr.ecr.us-east-1.amazonaws.com/voxmissa:d78cc91a47093c8d3ea3eee7ab4721dcadb85552",
       "memory": "2048",
       "essential": true,
       "portMappings": [{
