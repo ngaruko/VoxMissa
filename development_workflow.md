@@ -128,7 +128,6 @@ Consider the following example:
 ``` 
 
 Any other further information should be provided in the second line of the commit message, respecting 79 character line widths. Using `git commit -v` is recommended to review your diff while you write your commit message.
-{{% /alert %}}
 
 See tips on [How to Write a Git Commit Message](https://chris.beams.io/posts/git-commit/) and add your favorites here.
 
@@ -171,6 +170,15 @@ Issues in this column are being actively worked on, which includes development, 
 Any code should be in a branch in each of the repositories you update. The name of the branch should be in the form `<issue-number>-<readable-name>`, for example `14-fix-export-report`. Follow the [Quality Assurance](https://github.com/OneRegNZ/onereg/quality_assurance.md) process to take full ownership of what you are building.
 
 Use the following template for QA feedback throughout the development.
+## title {.tabset .tabset-fade}
+content above tabbed region.
+
+### tab Social-Media
+
+tab content Social-Media
+
+### tab Contact
+
 
 {{< tabpane persistLang=false lang="markdown">}}
 {{< tab header="Test passed" >}}
