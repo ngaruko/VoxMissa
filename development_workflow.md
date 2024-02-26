@@ -196,6 +196,25 @@ tab content Social-Media
 {{< tabpane persistLang=false lang="markdown">}}
 {{< tab header="Test passed" >}}
 
+| Test Passed | Test Failed |
+| ------------- | ------------- |
+| ### Fixed on `####-branch-name`
+A small description, and images or videos that support the comment.
+
+<details>
+<summary>Image/video attached</sumamry>
+</details>  | ### Not working on `####-branch-name`
+A small description, and images or videos that support the comment.
+
+<details>
+<summary>Image/video attached</sumamry>
+</details>  |
+| Test passed successfully. :white_check_mark:
+The ticket is ready to merge.
+@<developer's name>  | Test failed :x:
+The ticket needs further development.
+@<developer's name> |
+
 ### Test details
 
 **Database/Instance:** <demo>
