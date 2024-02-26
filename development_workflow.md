@@ -170,58 +170,6 @@ Issues in this column are being actively worked on, which includes development, 
 Any code should be in a branch in each of the repositories you update. The name of the branch should be in the form `<issue-number>-<readable-name>`, for example `14-fix-export-report`. Follow the [Quality Assurance](https://github.com/OneRegNZ/onereg/quality_assurance.md) process to take full ownership of what you are building.
 
 Use the following template for QA feedback throughout the development.
-## title {.tabset .tabset-fade}
-content above tabbed region.
-
-### tab Social-Media
-
-tab content Social-Media
-
-### tab Contact
-
-
-
-## Quarterly Results {.tabset}
-
-### By Product
-
-(tab content)
-
-### By Region
-
-(tab content)
-
-## Quarterly Results {.tabset .tabset-fade .tabset-pills}
-
-{{< tabpane persistLang=false lang="markdown">}}
-{{< tab header="Test passed" >}}
-
-| Test Passed | Test Failed |
-| ------------- | ------------- |
-| 
-### Fixed on `####-branch-name`
-A small description, and images or videos that support the comment.
-
-<details>
-<summary>Image/video attached</sumamry>
-</details>  
-| 
-### Not working on `####-branch-name`
-A small description, and images or videos that support the comment.
-
-<details>
-<summary>Image/video attached</sumamry>
-</details>  
-|
-| 
-Test passed successfully. :white_check_mark:
-The ticket is ready to merge.
-@<developer's name>  
-|
- Test failed :x:
-The ticket needs further development.
-@<developer's name> 
-|
 
 ### Test details
 
@@ -242,90 +190,14 @@ A small description of how it was reproduced, and images or videos that support 
 <summary>Image/video attached</sumamry>
 </details>
 
-### Fixed on `####-branch-name`
-A small description, and images or videos that support the comment.
 
-<details>
-<summary>Image/video attached</sumamry>
-</details>
-
----
-
-Test passed successfully. :white_check_mark:
-The ticket is ready to merge.
-@<developer's name>
-
-{{< /tab >}}
-{{< tab header="Test failed" >}}
-### Test details
-
-**Database:** <demo>
-**Environment:** <Local>
-**Platform:** <WebApp>
-**Browser:** <Chrome>
-
----
-
-### Test scenario:
-Description of the scenario - This is not required for all the tests
-
-### Reproducible on `main`
-A small description of how it was reproduced, and images or videos that support the comment.
-
-<details>
-<summary>Image/video attached</sumamry>
-</details>
-
-### Not working on `####-branch-name`
-A small description, and images or videos that support the comment.
-
-<details>
-<summary>Image/video attached</sumamry>
-</details>
-
----
-
-Test failed :x:
-The ticket needs further development.
-@<developer's name>
-
-{{< /tab >}}
-{{< /tabpane >}}
-<nav>
-  <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Test Passed</a>
-    <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Test Failed</a>
-  </div>
-</nav>
-<div class="tab-content" id="nav-tabContent">
-  <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">test passed</div>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">test failed</div>
-</div>
 
 | Test Passed | Test Failed |
 | --- | --- |
-| ```### Fixed on `####-branch-name` A small description, and images or videos that support the comment.
-<details>
-<summary>Image/video attached</sumamry>
-</details>
----
-Test passed successfully. :white_check_mark:
-The ticket is ready to merge.
-@<developer's name> ```| ```### Not working on `####-branch-name`
-A small description, and images or videos that support the comment.
-<details>
-<summary>Image/video attached</sumamry>
-</details>
----
-Test failed :x: The ticket needs further development.
-@<developer's name>``` |
-
-| Test Passed | Test Failed |
-| --- | --- |
-| Fixed on `####-branch-name` | ### Not working on `####-branch-name |
+| Fixed on `####-branch-name` | ### Not working on `####-branch-name` |
 | A small description, and images or videos that support the comment. | A small description, and images or videos that support the comment.|
 |Test passed successfully. :white_check_mark:The ticket is ready to merge. |Test failed :x: The ticket needs further development.
-| @<developer's name>`    |@<developer's name>|
+| `@<developer's name>`    |`@<developer's name>`|
 
 A great way to facilitate discussion and collaboration is with a Draft PR.
 
