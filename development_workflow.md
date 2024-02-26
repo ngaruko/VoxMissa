@@ -295,7 +295,6 @@ The ticket needs further development.
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
     <a class="nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Test Passed</a>
     <a class="nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Test Failed</a>
-    <a class="nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
   </div>
 </nav>
 <div class="tab-content" id="nav-tabContent">
@@ -303,6 +302,31 @@ The ticket needs further development.
   <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">test failed</div>
 </div>
 
+| Test Passed | Test Failed |
+| --- | --- |
+| ### Fixed on `####-branch-name`
+A small description, and images or videos that support the comment.
+
+<details>
+<summary>Image/video attached</sumamry>
+</details>
+
+---
+
+Test passed successfully. :white_check_mark:
+The ticket is ready to merge.
+@<developer's name> | ### Not working on `####-branch-name`
+A small description, and images or videos that support the comment.
+
+<details>
+<summary>Image/video attached</sumamry>
+</details>
+
+---
+
+Test failed :x:
+The ticket needs further development.
+@<developer's name> |
 A great way to facilitate discussion and collaboration is with a Draft PR.
 
 Once you're confident that the change is complete and ready to be merged:
