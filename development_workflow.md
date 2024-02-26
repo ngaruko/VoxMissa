@@ -304,21 +304,21 @@ The ticket needs further development.
 
 | Test Passed | Test Failed |
 | --- | --- |
-| ### Fixed on `####-branch-name` A small description, and images or videos that support the comment.
+| ```### Fixed on `####-branch-name` A small description, and images or videos that support the comment.
 <details>
 <summary>Image/video attached</sumamry>
 </details>
 ---
 Test passed successfully. :white_check_mark:
 The ticket is ready to merge.
-@<developer's name> | ### Not working on `####-branch-name`
+@<developer's name> ```| ```### Not working on `####-branch-name`
 A small description, and images or videos that support the comment.
 <details>
 <summary>Image/video attached</sumamry>
 </details>
 ---
 Test failed :x: The ticket needs further development.
-@<developer's name> |
+@<developer's name>``` |
 
 A great way to facilitate discussion and collaboration is with a Draft PR.
 
