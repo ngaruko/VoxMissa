@@ -16,7 +16,8 @@
     <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
     <!-- Main UI -->
     <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
-   
+
+   <link rel="stylesheet" href="{% static 'styles/footer.css' %}" />
      
 {% block extracss %}
 {% endblock extracss %}
@@ -79,6 +80,7 @@
     {% block content %}
 
     {% endblock content %}
+    {% include "footer.html" %}
 </body>
 <script src="{% static 'uikit/app.js' %}"></script>
 <script src="{% static 'js/main.js' %}"></script>
@@ -117,5 +119,6 @@ $('.country-selector-col-sm-2 a').click(function(){
 <!-- Essential javascripts for application to work-->
 {% block extrascripts %}
 {% endblock extrascripts %}
+
 
 </html>

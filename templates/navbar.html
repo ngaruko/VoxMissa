@@ -98,12 +98,13 @@
                         <a href="{% url 'placeholder' %}">Donate to a Cause</a>
                         <a href="{% url 'placeholder' %}">Volunteer for a Cause</a>
                         <a href="{% url 'placeholder' %}">Write With Us</a>
+                        <a href="{% url 'placeholder' %}">Eye Witness</a>
                     </div>
                   </div>
 
                
                 <li class="header__menuItem"><a href="{% url 'forum' %}">Forum</a></li>
-
+                <li class="header__menuItem"><a href="{% url 'forum' %}">Petitions</a></li>
             
                 {% if request.user.is_authenticated %}
                 <div class="dropdown">
