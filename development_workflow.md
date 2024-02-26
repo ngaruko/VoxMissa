@@ -291,6 +291,17 @@ The ticket needs further development.
 
 {{< /tab >}}
 {{< /tabpane >}}
+=== "Unordered list"
+
+    * Sed sagittis eleifend rutrum
+    * Donec vitae suscipit est
+    * Nulla tempor lobortis orci
+
+=== "Ordered list"
+
+    1. Sed sagittis eleifend rutrum
+    2. Donec vitae suscipit est
+    3. Nulla tempor lobortis orci
 
 A great way to facilitate discussion and collaboration is with a Draft PR.
 
@@ -302,7 +313,7 @@ Once you're confident that the change is complete and ready to be merged:
 
 Once all PRs have been approved:
 
-1. Write a useful commit message in the PR using the [commit message format]({{< ref "#commit-message-format" >}}).
+1. Write a useful commit message in the PR using the [commit message format](#commit-message-format).
 2. Click the button to "Squash and Merge" the PR.
 3. If a backport is required cherry-pick the merged commit back to the release branches it's required in.
 4. Ensure the issue is added to the appropriate release milestone, which is the earliest semver version the change will be released in. This ensures it will be included in the release notes.
