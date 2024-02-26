@@ -41,7 +41,8 @@ That means leaving a comment, having the author read and understand it, and then
 
 To be clear and save all that back-and-forth though, you can make a code suggestion directly in your review, which will let the author simply click a button to accept the change (and have it automatically applied as a commit by GitHub).
 
-![GitHub review suggest change](gh-review-suggestion.png)
+<img width="935" alt="image" src="https://github.com/ngaruko/VoxMissa/assets/6979995/0c9491e6-0600-495e-8dd7-8ec994a5c730">
+
 
 #### Timeliness
 
