@@ -190,6 +190,9 @@ tab content Social-Media
 ### By Region
 
 (tab content)
+
+## Quarterly Results {.tabset .tabset-fade .tabset-pills}
+
 {{< tabpane persistLang=false lang="markdown">}}
 {{< tab header="Test passed" >}}
 
