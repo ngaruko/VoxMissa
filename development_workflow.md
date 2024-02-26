@@ -1,16 +1,10 @@
----
-title: "Development Workflow"
-linkTitle: "Workflow"
-weight: 6
-description: >
-  Overview of the development workflow
----
 
+# Development Workflow
 ## Code
 
 ### Writing
 
-Where possible, follow our [coding style guide]({{< ref "contribute/code/style-guide" >}}).
+Where possible, follow [Django coding style guide](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/).
 
 Aim for self-documenting code. Where code cannot be made self-documenting add commenting. Usually comments are useful when they explain why some code exists, and should not be explaining what some code is doing. 
 
@@ -32,14 +26,16 @@ The author and reviewer should use this [guide to code reviewing](https://google
 
 When doing a code review aim to be extremely clear. This helps things move quickly and avoids lost time in misunderstandings. One especially useful GitHub feature for doing this is suggesting a change. Consider the following example code:
 
-```javascript
-contacts.map( (c) => { return c.id });
+```
+for x in fruits:
+  if "a" in x:
+    newlist.append(x)
 ``` 
 
-The function body can be abbreviated. In a review you can leave a comment asking for the change, which would likely involve writing up a comment trying to have the author change it to the following:
+With list comprehension you can do all that with only one line of code. In a review you can leave a comment asking for the change, which would likely involve writing up a comment trying to have the author change it to the following:
 
-```javascript
-contacts.map( c => c.id);
+```
+newlist = [x for x in fruits if "a" in x]
 ``` 
 That means leaving a comment, having the author read and understand it, and then making and pushing up a change, hopefully matching your review expectations.
 
@@ -55,7 +51,7 @@ Code reviews should be completed within 24 hours of assignment (excluding weeken
 
 ### Updating The Issue With What You Actually Did
 
-Add [labels](https://github.com/medic/cht-core/labels) to the GitHub issue as needed. At this stage, the two to look out for are:
+Add [labels](https://github.com/OneRegNZ/onereg/labels) to the GitHub issue as needed. At this stage, the two to look out for are:
 - `Breaking change`
 - `UI/UX`
 
@@ -74,7 +70,7 @@ An example of a good thorough comment/template is as follows:
 ```
 ### Testing
 
-1. Install branch `81-do-great-things`
+1. Install branch `94-add-airport-traffic`
 2. [a specific thing to be sure it has been set up correctly]
 3. ...
 
@@ -92,13 +88,13 @@ An example of a good thorough comment/template is as follows:
 
 ### Testing
 
-Reach out to the Quality Assurance Engineers with the work to be done as early as possible in the development process to ensure they are informed and can guide development (see more in the [Quality Assistance]({{< ref "contribute/medic/product-development-process/quality-assistance" >}}) dedicated page).
+Reach out to the Quality Assurance Engineers with the work to be done as early as possible in the development process to ensure they are informed and can guide development (see more in the [Quality Assurance at OneReg](https://github.com/OneRegNZ/onereg/quality_assurance.md) dedicated page).
 
 Before asking for testing support from the QA Engineers, you should test your work after performing it. Correcting a small code error, such as a typo, or addding a missing step in the testing instructions could save QA Engineers hours of work. Also, by testing your code, you may get a better sense of why you make certain common mistakes, and learn to avoid repeating them in the future.
 
 All features and bug fixes must have at least one unit test. All features must have at least one end-to-end test.
 
-The CHT has a [fully automated end-to-end testing suite](https://github.com/medic/cht-core/tree/master/tests/e2e) which is executed in CI and must pass before any change is merged. This means you can have reasonable confidence that all code merged to the main branch is safe and ready for release without further regression testing. The suite isn't fully comprehensive but it is being constantly improved and expanded.
+We are working on a [fully automated end-to-end testing suite](https://github.com/OneRegNZ/onereg/tree/main/tests/e2e) which is executed in CI and must pass before any change is merged. This means you can have reasonable confidence that all code merged to the main branch is safe and ready for release without further regression testing. The suite isn't fully comprehensive but it is being constantly improved and expanded.
 
 From time to time QA Engineers will perform smoke tests, scalability tests, performance tests, and penetration tests to pick up on gradual regressions that may have crept in. The ultimate goal is that these tests will eventually be automated and added to the CI suite as well.
 
@@ -108,11 +104,11 @@ When the schema is changed you must also provide a migration so when instances a
 
 ## Commits
 
-The main branch is `main` (or `master`) which must be kept stable so as not to impact other developers and so a release branch can be created as needed. To achieve this (almost) all development should be done in a branch and submitted via a PR for code review. This means the CI runs and another developer has signed off on the change before it hits the `main` branch.
+The main branch is `main` which must be kept stable so as not to impact other developers and so a release branch can be created as needed. To achieve this (almost) all development should be done in a branch and submitted via a PR for code review. This means the CI runs and another developer has signed off on the change before it being merged to the `dev` branch then the passes tests in staging before hitting the  `main` branch.
 
 ### Commit message format
 
-The commit format should follow this [conventional-changelog angular preset](https://github.com/conventional-changelog/conventional-changelog/tree/master/packages/conventional-changelog-angular). This means that some of the release process can be automated. See the list of commit types and examples below:
+The commit format should follow this [conventional-changelog angular preset](https://www.conventionalcommits.org/en/v1.0.0-beta.4). This means that some of the release process can be automated. See the list of commit types and examples below:
 
 Type | Description | Example commit message | Release type
 -- | -- | -- | --
@@ -151,17 +147,17 @@ Read more about [using git](https://git-scm.com/doc/ext).
 
 ## Issues
 
-Issues are managed in Github. Issues should be created in the repository where the changes need to be made. If it is not clear in which repo to open an issue the default should be the `cht-core` repository. If it is a security or sensitive issue it should be opened in the private `medic-projects` repository.
+Issues are managed in Github. Issues should be created in the repository where the changes need to be made. If it is not clear in which repo to open an issue the default should be the `onereg` repository. 
 
-When creating issues add the appropriate [Priority](https://github.com/medic/medic/labels?utf8=%E2%9C%93&q=Priority%3A+) and [Type](https://github.com/medic/medic/labels?utf8=%E2%9C%93&q=Type%3A+) labels.
+When creating issues add the appropriate [Priority](https://github.com/OneRegNZ/onereg/labels?utf8=%E2%9C%93&q=Priority%3A+) and [Type](https://github.com/OneRegNZ/onereg/labels?utf8=%E2%9C%93&q=Type%3A+) labels.
 
 ### Regressions
 
-When a bug is found that impacts functionality that worked in a previous version, it's important that these are labelled properly so someone who is planning to upgrade can find it. To flag this, add the "Regression" label, and a labels in the form "Affects: {{version}}" (e.g.: "Affects: 3.14.0") for each version where this bug exists. It's likely that the label for this specific version doesn't exist so you may have to create it. This ensures that issue is listed as a Known Issue in the Release Notes for that version.
+When a bug is found that impacts functionality that worked in a previous version, it's important that these are labelled properly so someone who is planning to upgrade can find it. To flag this, add the "Regression" label, and a labels in the form "Affects: {{version}}" (e.g.: "Affects: 2.16.0") for each version where this bug exists. It's likely that the label for this specific version doesn't exist so you may have to create it. This ensures that issue is listed as a Known Issue in the Release Notes for that version.
 
 ## Project States
 
-When the issue is scheduled for development it will be added to the [Product Team Activities project](https://github.com/orgs/medic/projects/134). Each column in the project represents the state the issue is in.
+When the issue is scheduled for development it will be added to the [Product Team Activities project](https://github.com/orgs/OneRegNZ/projects/1). Each column in the project represents the state the issue is in.
 
 ### Todo
 
@@ -171,7 +167,7 @@ Issues in this column have been prioritised and are ready for development. The i
 
 Issues in this column are being actively worked on, which includes development, design, code reviews, and testing.
 
-Any code should be in a branch in each of the repositories you update. The name of the branch should be in the form `<issue-number>-<readable-name>`, for example `1104-inclusive-export`. Follow the [Quality Assistance]({{< ref "contribute/medic/product-development-process/quality-assistance" >}}) process to take full ownership of what you are building.
+Any code should be in a branch in each of the repositories you update. The name of the branch should be in the form `<issue-number>-<readable-name>`, for example `14-fix-export-report`. Follow the [Quality Assurance](https://github.com/OneRegNZ/onereg/quality_assurance.md) process to take full ownership of what you are building.
 
 Use the following template for QA feedback throughout the development.
 
@@ -180,9 +176,9 @@ Use the following template for QA feedback throughout the development.
 
 ### Test details
 
-**Config:** <Default/standard>
+**Database/Instance:** <demo>
 **Environment:** <Local>
-**Platform:** <WebApp>
+**Platform:** <Web>
 **Browser:** <Chrome>
 
 ---
@@ -190,7 +186,7 @@ Use the following template for QA feedback throughout the development.
 ### Test scenario:
 Description of the scenario - This is not required for all the tests
 
-### Reproducible on `master`
+### Reproducible on `main`
 A small description of how it was reproduced, and images or videos that support the comment.
 
 <details>
@@ -214,7 +210,7 @@ The ticket is ready to merge.
 {{< tab header="Test failed" >}}
 ### Test details
 
-**Config:** <Default/standard>
+**Database:** <demo>
 **Environment:** <Local>
 **Platform:** <WebApp>
 **Browser:** <Chrome>
@@ -224,7 +220,7 @@ The ticket is ready to merge.
 ### Test scenario:
 Description of the scenario - This is not required for all the tests
 
-### Reproducible on `master`
+### Reproducible on `main`
 A small description of how it was reproduced, and images or videos that support the comment.
 
 <details>
@@ -251,7 +247,7 @@ A great way to facilitate discussion and collaboration is with a Draft PR.
 
 Once you're confident that the change is complete and ready to be merged:
 
-1. Submit a PR for each of the repositories. Each PR message and description will become the commit message and description so keep the message concise, describe what and why rather than how, and link to the issue in the description (eg: "medic/cht-core#123").
+1. Submit a PR for each of the repositories. Each PR message and description will become the commit message and description so keep the message concise, describe what and why rather than how, and link to the issue in the description (eg: "OneRegNZ/onereg#13").
 1. Wait for the builds to succeed and ensure there are no conflicts with the the main branch so the PR can be merged.
 1. Pick one Reviewer for the PR and work with them until the code passes review. In some special cases more than one Reviewer may be necessary, but be specific about additional Reviewers and ensure you really need each of their additional reviews for a good reason. Remember, anyone can collaborate on PRs even if they aren't an official Reviewer. If you add a QA Engineer as a Reviewer, briefly comment in the ticket about what kind of testing review you expect from that engineer.
 
