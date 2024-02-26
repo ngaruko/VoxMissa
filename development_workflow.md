@@ -320,6 +320,13 @@ A small description, and images or videos that support the comment.
 Test failed :x: The ticket needs further development.
 @<developer's name>``` |
 
+| Test Passed | Test Failed |
+| --- | --- |
+| Fixed on `####-branch-name` | ### Not working on `####-branch-name |
+| A small description, and images or videos that support the comment. | A small description, and images or videos that support the comment.|
+|Test passed successfully. :white_check_mark:The ticket is ready to merge. |Test failed :x: The ticket needs further development.
+| @<developer's name>`    |@<developer's name>|
+
 A great way to facilitate discussion and collaboration is with a Draft PR.
 
 Once you're confident that the change is complete and ready to be merged:
