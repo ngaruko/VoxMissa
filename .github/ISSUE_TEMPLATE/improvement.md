@@ -1,16 +1,16 @@
 ---
-name: Feature request
-about: Suggest an idea for this project
+name: Improvement
+about: Suggest something to make an existing feature better
 title: ''
-labels: 'Type: Feature'
+labels: 'Type: Improvement'
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-<!-- A clear and concise description of what the problem is. Ex. I'm always frustrated when [...] -->
+**What feature do you want to improve?**
+<!-- A clear and concise description of what the problem is. Ex. It would be better to [...] -->
 
-**Describe the solution you'd like**
+**Describe the improvement you'd like**
 <!-- A clear and concise description of what you want to happen. -->
 
 **Describe alternatives you've considered**

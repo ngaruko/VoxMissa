@@ -1,0 +1,10 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Request Feature 
+    url: https://onereg.co.nz/feature_request/
+    about: Request Feature or Report a Bug
+
+  - name: Ask Question  
+    url: https://onereg.co.nz/community_center/
+    about: Ask a Question from the Community Center
+  
