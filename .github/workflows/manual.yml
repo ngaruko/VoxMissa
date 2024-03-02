@@ -1,10 +1,10 @@
 name: Add issues to release testing project
 
-# on:
-#   issues:
-#     types:
-#       - opened
-on: workflow_dispatch
+on:
+  issues:
+    types:
+      - opened
+# on: workflow_dispatch
 jobs:
   add-to-project:
     name: Add issue to project
@@ -15,8 +15,8 @@ jobs:
         with:
           project-url: https://github.com/users/ngaruko/projects/2/views/1
           github-token: ${{ secrets.GH_TOKEN }}
-          # labeled: release
-          # label-operator: OR
+          labeled: release, bug
+          label-operator: OR
 
       - uses: kalgurn/update-project-item-status@main
         with:
