@@ -1,0 +1,10 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Request Feature 
+    url: https://voxmissa.com/feature_request/
+    about: Request Feature or Report a Bug
+
+  - name: Ask Question  
+    url: mailto:info@voxmissa.com
+    about: Email to **[info@voxmissa.com](mailto:info@voxmissa.com)**
+  
