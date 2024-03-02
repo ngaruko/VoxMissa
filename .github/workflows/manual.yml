@@ -22,6 +22,6 @@ jobs:
         with:
           project-url: https://github.com/users/ngaruko/projects/2/views/1
           github-token: ${{ secrets.GH_TOKEN }}
-          # item-id: ${{ steps.addItem.outputs.itemId }}
-          item-id: '2164533376'
+          item-id: ${{ steps.addItem.outputs.itemId }}
+          # item-id: '2164533376'
           status: "Todo"
