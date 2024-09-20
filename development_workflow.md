@@ -4,7 +4,7 @@
 
 ### Writing
 
-Where possible, follow [Django coding style guide](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/).
+Where possible, follow [Django coding style guide](https://docs.djangoproject.com/en/dev/internals/contributing/writing-code/coding-style/).<sup>1</sup>
 
 Aim for self-documenting code. Where code cannot be made self-documenting add commenting. Usually comments are useful when they explain why some code exists, and should not be explaining what some code is doing. 
 
@@ -218,3 +218,6 @@ Once all PRs have been approved:
 ### Done
 
 Issues in this column are complete, all code has been merged into the main branch and/or release branches, and are ready for release.
+
+## Notes
+<sup>1</sup>. Suggestion, please suggest code style preferred or in use.
