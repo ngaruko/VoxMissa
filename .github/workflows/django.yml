@@ -27,5 +27,5 @@ jobs:
         pip install --root-user-action=ignore --no-cache-dir --ignore-installed -r requirements.txt
     - name: Run Tests
       run: |
-        pip install pytest-cov
+        pip install pytest-cov # for test coverage
         pytest --cov --cov-report=xml
